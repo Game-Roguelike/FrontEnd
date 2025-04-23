@@ -1,0 +1,17 @@
+/* @import url("");  reference for extra css files, format is "fileName.css" */
+
+@font-face {
+    font-family: dungeonFont;
+    src: url("../assets/Misc/DungeonFont.ttf");
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "dungeonFont";
+}
+
+.hidden {
+    display: none !important;
+}
