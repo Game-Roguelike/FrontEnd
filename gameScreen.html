@@ -8,6 +8,78 @@
     </head>
 
     <body class="">
+        <div class="sideControlPanel">
+            <button class="controlButton">0</button>
+            <button class="controlButton">1</button>
+            <button class="controlButton">2</button>
+            <button class="controlButton">3</button>
+        </div>
+
+        <div class="centerSection">  
+            <div class="levelContainer">
+                <div class="levelPopUp hidden">
+                    <p class="popUpText">Victory!</p>
+                    <p class="popUpText">You've cleared the stage</p>
+                    <p id="clickAnywhere">Click anywhere to continue</p>
+                </div>
+
+                <span class="levelLight"></span>
+                <img class="backgroundImg" src="/assets/Fallback/sky1.png" alt="">
+                <img class="platformImg" src="/assets/Fallback/room1Pixel.png" alt="">
+                <svg class="windowLight" viewBox="0 0 1920 221.24"><polygon class="windowLight" points="0 55.44 244.07 55.44 304.8 156.83 399.67 0 733.02 0 761.62 47.27 790.21 0 1123.56 0 1152.26 47.44 1180.96 0 1514.31 0 1607.92 155.61 1667.91 56.44 1920 56.44 1920 148.86 1770.84 148.86 1883.6 225.04 36.4 225.04 150.16 148.86 0 148.86 0 55.44"/></svg>
+            </div>
+            <div class="sidePanel">
+                <p>Username's stats</p>
+                <br>
+                <p>Max HP : 55</p>
+                <p>Level : 10</p>
+                <p>Xp : 102/124</p>
+                <p class="specialLine"><span>Coins : 47  </span><img src="/assets/UI/traderMap.png" alt=""></p>
+                <br>
+                <p class="specialLine"><button>+</button><span>Strength : 8</span></p>
+                <p class="specialLine"><button>+</button><span>Endurance : 11</span></p>
+                <br>
+                <p>Stat points : 2</p>
+                <p>Confirm</p>
+            </div>
+        </div>
+
+        <span class="blackoutPanel hidden"></span>
+
+        <div class="playerInventory">
+            <div class="hotbar inventoryRow">
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotArrow"><img src="/assets/UI/arrowSlot.png" alt=""></span>
+            </div>
+
+            <div class="inventoryRow">
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotHelmet"></span>
+                <span class="inventorySlot slotChestplate"></span>
+                <span class="inventorySlot slotBoots"></span>
+                <span class="inventorySlot slotHands"></span>
+            </div>
+
+            <div class="inventoryRow">
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotNormal"></span>
+                <span class="inventorySlot slotWeapon"></span>
+                <span class="inventorySlot slotKeepsake"></span>
+                <span class="inventorySlot slotRing"></span>
+                <span class="inventorySlot slotRing"></span>
+            </div>
+        </div>
         
     </body>
 </html>    
