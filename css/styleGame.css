@@ -16,6 +16,11 @@
     --text-shadow : #840e09 ;
 }
 
+.victoryPop {
+    --text-color : #febf4c ;
+    --text-shadow : #382f35 ;
+}
+
 @font-face {
     font-family: dungeonFont;
     src: url("../assets/Misc/DungeonFont.ttf");
