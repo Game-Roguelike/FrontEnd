@@ -5,7 +5,7 @@ const levelPopUp = document.querySelector(".levelPopUp");
 
 //temporal bit till we get the game sequense going
 
-document.getElementsByClassName("controlButton")[0].onclick = function() {
+document.getElementsByClassName("controlButton")[0].onclick = function() { //clear pop ups
     triggerLevelPopUp(100, 0);
     
     setTimeout(() => {
@@ -14,7 +14,7 @@ document.getElementsByClassName("controlButton")[0].onclick = function() {
     }, 400)
 }
 
-document.getElementsByClassName("controlButton")[1].onclick = function() {
+document.getElementsByClassName("controlButton")[1].onclick = function() { //victory pop up
     document.getElementsByClassName("popUpText")[0].textContent = `Victory!`;
     document.getElementsByClassName("popUpText")[1].textContent = `You've cleared the level~`;
 
@@ -29,7 +29,7 @@ document.getElementsByClassName("controlButton")[1].onclick = function() {
     }
 }
 
-document.getElementsByClassName("controlButton")[2].onclick = function() {
+document.getElementsByClassName("controlButton")[2].onclick = function() { //defeat pop up
     document.getElementsByClassName("popUpText")[0].textContent = `Defeat...`;
     document.getElementsByClassName("popUpText")[1].textContent = `Better luck with rng next time`;
 
@@ -44,7 +44,7 @@ document.getElementsByClassName("controlButton")[2].onclick = function() {
     }
 }
 
-document.getElementsByClassName("controlButton")[3].onclick = function() {
+document.getElementsByClassName("controlButton")[3].onclick = function() { //level up pop up
     document.getElementsByClassName("popUpText")[0].textContent = `Level Up!`;
     document.getElementsByClassName("popUpText")[1].textContent = `Don't forget to use your stat points`;
 
@@ -56,6 +56,50 @@ document.getElementsByClassName("controlButton")[3].onclick = function() {
     else{
         levelPopUp.classList.add("levelPop");
         levelPopUp.classList.remove("defeatPop", "victoryPop");
+    }
+}
+
+document.getElementsByClassName("controlButton")[4].onclick = function() { //toggle room insides visibility
+    if (utilityScript.isElementHidden(document.querySelector(".roomFillings"))) {
+        utilityScript.unhideElement(document.querySelector(".roomFillings"));
+    } else {
+        utilityScript.hideElement(document.querySelector(".roomFillings"));
+    }
+}
+
+document.getElementsByClassName("controlButton")[5].onclick = function() { //show combat room elements
+    if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
+        utilityScript.hideElement(document.querySelector(".traderRoom"));
+        utilityScript.unhideElement(document.querySelector(".combatRoom"));
+        utilityScript.unhideElement(document.querySelector(".enemyElement"));
+        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
+        document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
+    } else {
+        utilityScript.hideElement(document.querySelector(".combatRoom"));
+    }
+}
+
+document.getElementsByClassName("controlButton")[6].onclick = function() { //show trader room elements
+    if (utilityScript.isElementHidden(document.querySelector(".traderRoom"))) {
+        utilityScript.hideElement(document.querySelector(".combatRoom"));
+        utilityScript.unhideElement(document.querySelector(".traderRoom"));
+        utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
+    } else {
+        utilityScript.hideElement(document.querySelector(".traderRoom"));
+        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
+    }
+}
+
+document.getElementsByClassName("controlButton")[7].onclick = function() { //show combat room after victory
+    if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
+        utilityScript.hideElement(document.querySelector(".traderRoom"));
+        utilityScript.unhideElement(document.querySelector(".combatRoom"));
+        utilityScript.hideElement(document.querySelector(".enemyElement"));
+        utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
+        document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
+    } else {
+        utilityScript.hideElement(document.querySelector(".combatRoom"));
+        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
     }
 }
 

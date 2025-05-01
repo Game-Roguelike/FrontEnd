@@ -13,6 +13,10 @@
             <button class="controlButton">1</button>
             <button class="controlButton">2</button>
             <button class="controlButton">3</button>
+            <button class="controlButton">4</button>
+            <button class="controlButton">5</button>
+            <button class="controlButton">6</button>
+            <button class="controlButton">7</button>
         </div>
 
         <div class="centerSection">  
@@ -24,6 +28,77 @@
                 </div>
 
                 <span class="levelLight"></span>
+
+                <div class="roomFillings hidden">
+                    <span class="nextRoomBtn hidden">Next room >></span>
+
+                    <div class="generalRoomUI">
+                        <div class="playerElement">
+                            <img class="healthBarStatus" src="/assets/UI/healthBarAlive.png" alt="">
+                            <span class="healthBar"></span>
+                            <span class="currentHealth playerHealth">55/55</span>
+                            <img class="playerSprite" src="/assets/Fallback/rogue26Upscale.png" alt="">
+                            <span class="name playerName">Username</span>
+                        </div>
+                        <div class="bottomUI">
+                            <span class="attackBtn">Attack</span>
+                            <div class="stageMap">
+                                <span class="mapThread"></span>
+                                <img src="/assets/UI/combatMap.png" alt="">
+                                <img src="/assets/UI/combatMap.png" alt="">
+                                <img src="/assets/UI/combatMap.png" alt="">
+                                <img src="/assets/UI/currentlyAtMap.png" alt="">
+                                <img src="/assets/UI/traderMap.png" alt="">
+                                <img src="/assets/UI/bossMap.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="combatRoom hidden">
+                        <div class="enemyElement">
+                            <img class="healthBarStatus" src="/assets/UI/healthBarAlive.png" alt="">
+                            <span class="healthBar"></span>
+                            <span class="currentHealth enemyHealth">55/55</span>
+                            <img class="EnemySprite" src="/assets/Fallback/generallGoblinUpscaled.png" alt="">
+                            <span class="name enemyName">Generall Goblin</span>
+                        </div>
+                        <img class="roomChest" src="/assets/UI/chestClosed.png" alt="">
+                    </div>
+                    <div class="traderRoom hidden">
+                        <img class="traderBG" src="/assets/UI/traderRoomBG.png" alt="">
+
+                        <div class="containerEquipment">
+                            <img class="traderOffer equipmentOffer" src="/assets/Fallback/testChestplate.png" alt="">
+                            <div class="objectDescription equipmentDescription">
+                                <p>Object name</p>
+                                <p>Stat bonus</p>
+                                <p>Effect description</p>
+                                <p>Price : XX Coins</p>
+                            </div>
+                        </div>
+                        
+                        <div class="containerWeapon">
+                            <img class="traderOffer weaponOffer" src="/assets/Fallback/testWeapon.png" alt="">
+                            <div class="objectDescription weaponDescription">
+                                <p>Object Name</p>
+                                <p>Damage value</p>
+                                <p>Effect description</p>
+                                <p>Price : XX Coins</p>
+                            </div>
+                        </div>
+                        
+                        <div class="containerUsable">
+                            <img class="traderOffer usableOffer" src="/assets/Fallback/testUsable.png" alt="">
+                            <div class="objectDescription usableDescription">
+                                <p>Object Name</p>
+                                <p>Effect description</p>
+                                <p>Number of uses</p>
+                                <p>Price : XX Coins</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
                 <img class="backgroundImg" src="/assets/Fallback/sky1.png" alt="">
                 <img class="platformImg" src="/assets/Fallback/room1Pixel.png" alt="">
                 <svg class="windowLight" viewBox="0 0 1920 221.24"><polygon class="windowLight" points="0 55.44 244.07 55.44 304.8 156.83 399.67 0 733.02 0 761.62 47.27 790.21 0 1123.56 0 1152.26 47.44 1180.96 0 1514.31 0 1607.92 155.61 1667.91 56.44 1920 56.44 1920 148.86 1770.84 148.86 1883.6 225.04 36.4 225.04 150.16 148.86 0 148.86 0 55.44"/></svg>
