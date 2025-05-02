@@ -2,7 +2,7 @@ import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
-const roomElementsExtars = [document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn"), document.querySelector(".combatRoom"), document.querySelector(".enemyElement")];
+const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
 
 //temporal bit till we get the game sequense going
 
@@ -10,7 +10,7 @@ document.getElementsByClassName("controlButton")[0].onclick = function() { //cle
     triggerLevelPopUp(100, 0);
     
     setTimeout(() => {
-        utilityScript.hideElement(levelPopUp);
+        utilityScript.hideElement(".levelPopUp");
         levelPopUp.classList.remove("victoryPop", "levelPop", "defeatPop");
     }, 400)
 }
@@ -19,9 +19,9 @@ document.getElementsByClassName("controlButton")[1].onclick = function() { //vic
     document.getElementsByClassName("popUpText")[0].textContent = `Victory!`;
     document.getElementsByClassName("popUpText")[1].textContent = `You've cleared the level~`;
 
-    if(utilityScript.isElementHidden(levelPopUp)) {
+    if(utilityScript.isElementHidden(".levelPopUp")) {
         levelPopUp.classList.add("victoryPop");
-        utilityScript.unhideElement(levelPopUp);
+        utilityScript.unhideElement(".levelPopUp");
         triggerLevelPopUp(0, 100);
     }
     else{
@@ -34,9 +34,9 @@ document.getElementsByClassName("controlButton")[2].onclick = function() { //def
     document.getElementsByClassName("popUpText")[0].textContent = `Defeat...`;
     document.getElementsByClassName("popUpText")[1].textContent = `Better luck with rng next time`;
 
-    if(utilityScript.isElementHidden(levelPopUp)) {
+    if(utilityScript.isElementHidden(".levelPopUp")) {
         levelPopUp.classList.add("defeatPop");
-        utilityScript.unhideElement(levelPopUp);
+        utilityScript.unhideElement(".levelPopUp");
         triggerLevelPopUp(0, 100);
     }
     else{
@@ -49,9 +49,9 @@ document.getElementsByClassName("controlButton")[3].onclick = function() { //lev
     document.getElementsByClassName("popUpText")[0].textContent = `Level Up!`;
     document.getElementsByClassName("popUpText")[1].textContent = `Don't forget to use your stat points`;
 
-    if(utilityScript.isElementHidden(levelPopUp)) {
+    if(utilityScript.isElementHidden(".levelPopUp")) {
         levelPopUp.classList.add("levelPop");
-        utilityScript.unhideElement(levelPopUp);
+        utilityScript.unhideElement(".levelPopUp");
         triggerLevelPopUp(0, 100);
     }
     else{
@@ -61,17 +61,17 @@ document.getElementsByClassName("controlButton")[3].onclick = function() { //lev
 }
 
 document.getElementsByClassName("controlButton")[4].onclick = function() { //toggle room insides visibility
-    if (utilityScript.isElementHidden(document.querySelector(".roomFillings"))) {
-        utilityScript.unhideElement(document.querySelector(".roomFillings"));
+    if (utilityScript.isElementHidden(".roomFillings")) {
+        utilityScript.unhideElement(".roomFillings");
     } else {
-        utilityScript.hideElement(document.querySelector(".roomFillings"));
+        utilityScript.hideElement(".roomFillings");
     }
 }
 
 document.getElementsByClassName("controlButton")[5].onclick = function() { //show combat room elements
-    if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
+    if (utilityScript.isElementHidden(".combatRoom")) {
         utilityScript.hideMultipleElements(roomElementsExtars);
-        utilityScript.unhideMultipleElements([document.querySelector(".combatRoom"), document.querySelector(".enemyElement")]);
+        utilityScript.unhideMultipleElements([".combatRoom", ".enemyElement"]);
         document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);
@@ -80,18 +80,18 @@ document.getElementsByClassName("controlButton")[5].onclick = function() { //sho
 
 
 document.getElementsByClassName("controlButton")[6].onclick = function() { //show trader room elements
-    if (utilityScript.isElementHidden(document.querySelector(".traderRoom"))) {
+    if (utilityScript.isElementHidden(".traderRoom")) {
         utilityScript.hideMultipleElements(roomElementsExtars);
-        utilityScript.unhideMultipleElements([document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn")])
+        utilityScript.unhideMultipleElements([".traderRoom", ".nextRoomBtn"])
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);
     }
 }
 
 document.getElementsByClassName("controlButton")[7].onclick = function() { //show combat room after victory
-    if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
+    if (utilityScript.isElementHidden(".combatRoom")) {
         utilityScript.hideMultipleElements(roomElementsExtars);
-        utilityScript.unhideMultipleElements([document.querySelector(".combatRoom"), document.querySelector(".nextRoomBtn")])
+        utilityScript.unhideMultipleElements([".combatRoom", ".nextRoomBtn"])
         document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);

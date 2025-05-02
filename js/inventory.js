@@ -1,17 +1,16 @@
 import * as utilityScript from './utility.js';
 
 let isInventoryOpen = false;
-const panel = document.querySelector(".blackoutPanel");
 
 document.querySelector(".inventorySlot.slotArrow").onclick = function() {
     if (!isInventoryOpen) {
         moveInventory("-", 85, 0, 0);
         isInventoryOpen = true;
-        utilityScript.unhideElement(panel)
+        utilityScript.unhideElement(".blackoutPanel")
     } else {
         moveInventory("+", 40, 180, 0.5);
         isInventoryOpen = false;
-        setTimeout(() => utilityScript.hideElement(panel), 400);
+        setTimeout(() => utilityScript.hideElement(".blackoutPanel"), 400);
     }
 }
 
@@ -34,7 +33,7 @@ function moveInventory(direction, startVh, startDeg, startOpacity) {
 
         document.querySelector(".playerInventory").style.top = `${currentVh}vh`;
         document.querySelector(".inventorySlot.slotArrow").style.rotate = `${currentDeg}deg`;
-        panel.style.opacity = currentOpacity;
+        document.querySelector(".blackoutPanel").style.opacity = currentOpacity;
 
         if (progress < 1) {
             requestAnimationFrame(animate);
