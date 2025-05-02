@@ -11,3 +11,10 @@ export function unhideElement(elem) {
 export function isElementHidden(elem) {
    return elem.classList.contains(HIDDEN_CLASS_NAME);
 }
+
+export function hidingRoomElements() {
+    hideElement(document.querySelector(".traderRoom"));
+    hideElement(document.querySelector(".nextRoomBtn"));
+    hideElement(document.querySelector(".combatRoom"));
+    hideElement(document.querySelector(".enemyElement"));
+}

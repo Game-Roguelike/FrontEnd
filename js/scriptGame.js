@@ -69,37 +69,33 @@ document.getElementsByClassName("controlButton")[4].onclick = function() { //tog
 
 document.getElementsByClassName("controlButton")[5].onclick = function() { //show combat room elements
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
-        utilityScript.hideElement(document.querySelector(".traderRoom"));
+        utilityScript.hidingRoomElements();
         utilityScript.unhideElement(document.querySelector(".combatRoom"));
         utilityScript.unhideElement(document.querySelector(".enemyElement"));
-        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
         document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
     } else {
-        utilityScript.hideElement(document.querySelector(".combatRoom"));
+        utilityScript.hidingRoomElements();
     }
 }
 
 document.getElementsByClassName("controlButton")[6].onclick = function() { //show trader room elements
     if (utilityScript.isElementHidden(document.querySelector(".traderRoom"))) {
-        utilityScript.hideElement(document.querySelector(".combatRoom"));
+        utilityScript.hidingRoomElements();
         utilityScript.unhideElement(document.querySelector(".traderRoom"));
         utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
     } else {
-        utilityScript.hideElement(document.querySelector(".traderRoom"));
-        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
+        utilityScript.hidingRoomElements();
     }
 }
 
 document.getElementsByClassName("controlButton")[7].onclick = function() { //show combat room after victory
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
-        utilityScript.hideElement(document.querySelector(".traderRoom"));
+        utilityScript.hidingRoomElements();
         utilityScript.unhideElement(document.querySelector(".combatRoom"));
-        utilityScript.hideElement(document.querySelector(".enemyElement"));
         utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
         document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
     } else {
-        utilityScript.hideElement(document.querySelector(".combatRoom"));
-        utilityScript.hideElement(document.querySelector(".nextRoomBtn"));
+        utilityScript.hidingRoomElements();
     }
 }
 
