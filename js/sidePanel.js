@@ -31,12 +31,8 @@ class Player {
         return this.strengthPoint + this.endurancePoint;
     }
 
-    calculateAbilityPoints(){
+    calculateAbilityPoints() {
         const totalToApply = this.getTotalTempPoints();
-
-        if (totalToApply === 0) {
-            return false;
-        }
 
         this.strength += this.strengthPoint;
         this.endurance += this.endurancePoint;
@@ -44,8 +40,6 @@ class Player {
 
         this.strengthPoint = 0;
         this.endurancePoint = 0;
-
-        return true;
     }
 
     canBeApplied() {
@@ -60,7 +54,6 @@ const playersTypes = {
 };
 
 const player = playersTypes.strongman;
-//currently will change after backend
 
 maxHpElement.textContent = `MaxHp : ${player.hp}`;
 levelElement.textContent = `Level : ${player.level}`;
