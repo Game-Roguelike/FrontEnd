@@ -1,3 +1,11 @@
+const maxHpElement = document.querySelector('#MaxHp');
+const levelElement = document.querySelector('#Level');
+const xpElement = document.querySelector('#Xp');
+const coinsElement = document.querySelector('#Coins');
+const strengthElement = document.querySelector('#Strength');
+const enduranceElement = document.querySelector('#Endurance');
+const pointsElement = document.querySelector('#Points');
+
 class Player {
     constructor(name, hp, strength, endurance) {
         this.name = name;
@@ -6,57 +14,59 @@ class Player {
         this.endurance = endurance;
 
         this.xp = 0;
+        this.maxXp = 6;
         this.coins = 0;
         this.level = 0;
         this.points = 5;
     }
 }
 
-let players = {
-    Strongman: new Player('Strongman', 20, 10, 1),
-    Tank: new Player('Tank', 40, 1, 1),
-    Hardyman: new Player('Hardyman', 20, 1, 10),
+const players = {
+    strongman: new Player('Strongman', 20, 10, 1),
+    tank: new Player('Tank', 40, 1, 1),
+    hardyman: new Player('Hardyman', 20, 1, 10),
 };
 
 //currently will change after backend
-let maxXp = 6;
 
-document.getElementById('MaxHp').textContent = 'MaxHp : ' + players.Strongman.hp;
-document.getElementById('Level').textContent = 'Level : ' + players.Strongman.level;
-document.getElementById('Xp').textContent = 'Xp : ' + players.Strongman.xp + '/' + maxXp;
-document.getElementById('Coins').textContent = 'Coins : ' + players.Strongman.coins;
-document.getElementById('Strength').textContent = 'Strength : ' + players.Strongman.strength;
-document.getElementById('Endurance').textContent = 'Endurance : ' + players.Strongman.endurance;
-document.getElementById('Points').textContent = 'Stat points : ' + players.Strongman.points;
+maxHpElement.textContent = 'MaxHp : ' + players.strongman.hp;
+levelElement.textContent = 'Level : ' + players.strongman.level;
+xpElement.textContent = 'Xp : ' + players.strongman.xp + '/' + players.strongman.maxXp;
+coinsElement.textContent = 'Coins : ' + players.strongman.coins;
+strengthElement.textContent = 'Strength : ' + players.strongman.strength;
+enduranceElement.textContent = 'Endurance : ' + players.strongman.endurance;
+pointsElement.textContent = 'Stat points : ' + players.strongman.points;
 
-let strength_Button = document.getElementById('strength_Button');
-let endurance_Button = document.getElementById('endurance_Button');
+const StrengthButton = document.querySelector('#StrengthButton');
+const EnduranceButton = document.querySelector('#EnduranceButton');
+const ConfirmButton = document.querySelector('#ConfirmButton');
 
-let selectedStat = null;
 let tempPoints = {
     strength: 0,
     endurance: 0,
 };
 
-strength_Button.onclick = function () {
-    if (players.Strongman.points > getTotalTempPoints()) {
+StrengthButton.onclick = function () {
+    if (players.strongman.points > getTotalTempPoints()) {
         tempPoints.strength += 1;
-        document.getElementById('Strength').textContent = 'Strength : ' + players.Strongman.strength + ' (+' + tempPoints.strength + ')';
+        document.querySelector('#Strength').textContent = 'Strength : ' + players.strongman.strength + ' (+' + tempPoints.strength + ')';
+        updatePointsPreview();
     } else {
         alert('Not enough points!');
     }
 };
 
-endurance_Button.onclick = function () {
-    if (players.Strongman.points > getTotalTempPoints()) {
+EnduranceButton.onclick = function () {
+    if (players.strongman.points > getTotalTempPoints()) {
         tempPoints.endurance += 1;
-        document.getElementById('Endurance').textContent = 'Endurance : ' + players.Strongman.endurance + ' (+' + tempPoints.endurance + ')';
+        document.querySelector('#Endurance').textContent = 'Endurance : ' + players.strongman.endurance + ' (+' + tempPoints.endurance + ')';
+        updatePointsPreview();
     } else {
         alert('Not enough points!');
     }
 };
 
-confirm_Button.onclick = function () {
+ConfirmButton.onclick = function () {
     let totalToApply = getTotalTempPoints();
 
     if (totalToApply === 0) {
@@ -64,13 +74,13 @@ confirm_Button.onclick = function () {
         return;
     }
 
-    players.Strongman.strength += tempPoints.strength;
-    players.Strongman.endurance += tempPoints.endurance;
-    players.Strongman.points -= totalToApply;
+    players.strongman.strength += tempPoints.strength;
+    players.strongman.endurance += tempPoints.endurance;
+    players.strongman.points -= totalToApply;
 
-    document.getElementById('Strength').textContent = 'Strength : ' + players.Strongman.strength;
-    document.getElementById('Endurance').textContent = 'Endurance : ' + players.Strongman.endurance;
-    document.getElementById('Points').textContent = 'Points : ' + players.Strongman.points;
+    document.querySelector('#Strength').textContent = 'Strength : ' + players.strongman.strength;
+    document.querySelector('#Endurance').textContent = 'Endurance : ' + players.strongman.endurance;
+    document.querySelector('#Points').textContent = 'Stat points : ' + players.strongman.points;
 
     tempPoints.strength = 0;
     tempPoints.endurance = 0;
@@ -78,4 +88,9 @@ confirm_Button.onclick = function () {
 
 function getTotalTempPoints() {
     return tempPoints.strength + tempPoints.endurance;
+}
+
+function updatePointsPreview() {
+    let remaining = players.strongman.points - getTotalTempPoints();
+    document.querySelector('#Points').textContent = 'Stat points : ' + remaining;
 }
