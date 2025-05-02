@@ -2,6 +2,7 @@ import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
+const roomElementsExtars = [document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn"), document.querySelector(".combatRoom"), document.querySelector(".enemyElement")];
 
 //temporal bit till we get the game sequense going
 
@@ -69,31 +70,31 @@ document.getElementsByClassName("controlButton")[4].onclick = function() { //tog
 
 document.getElementsByClassName("controlButton")[5].onclick = function() { //show combat room elements
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
-        utilityScript.hidingRoomElements();
-        utilityScript.unhideRoomElements([document.querySelector(".combatRoom"), document.querySelector(".enemyElement")]);
+        utilityScript.hideMultipleElements(roomElementsExtars);
+        utilityScript.unhideMultipleElements([document.querySelector(".combatRoom"), document.querySelector(".enemyElement")]);
         document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
     } else {
-        utilityScript.hidingRoomElements();
+        utilityScript.hideMultipleElements(roomElementsExtars);
     }
 }
 
 
 document.getElementsByClassName("controlButton")[6].onclick = function() { //show trader room elements
     if (utilityScript.isElementHidden(document.querySelector(".traderRoom"))) {
-        utilityScript.hidingRoomElements();
-        utilityScript.unhideRoomElements([document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn")])
+        utilityScript.hideMultipleElements(roomElementsExtars);
+        utilityScript.unhideMultipleElements([document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn")])
     } else {
-        utilityScript.hidingRoomElements();
+        utilityScript.hideMultipleElements(roomElementsExtars);
     }
 }
 
 document.getElementsByClassName("controlButton")[7].onclick = function() { //show combat room after victory
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
-        utilityScript.hidingRoomElements();
-        utilityScript.unhideRoomElements([document.querySelector(".combatRoom"), document.querySelector(".nextRoomBtn")])
+        utilityScript.hideMultipleElements(roomElementsExtars);
+        utilityScript.unhideMultipleElements([document.querySelector(".combatRoom"), document.querySelector(".nextRoomBtn")])
         document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
     } else {
-        utilityScript.hidingRoomElements();
+        utilityScript.hideMultipleElements(roomElementsExtars);
     }
 }
 

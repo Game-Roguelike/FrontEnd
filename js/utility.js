@@ -12,14 +12,13 @@ export function isElementHidden(elem) {
    return elem.classList.contains(HIDDEN_CLASS_NAME);
 }
 
-export function hidingRoomElements() {
-    hideElement(document.querySelector(".traderRoom"));
-    hideElement(document.querySelector(".nextRoomBtn"));
-    hideElement(document.querySelector(".combatRoom"));
-    hideElement(document.querySelector(".enemyElement"));
+export function hideMultipleElements(array) {
+    for (let i = 0; i < array.length; i++) {
+        hideElement(array[i]);
+    }
 }
 
-export function unhideRoomElements(array) {
+export function unhideMultipleElements(array) {
     for (let i = 0; i < array.length; i++) {
         unhideElement(array[i]);
     }
