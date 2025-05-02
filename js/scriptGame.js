@@ -70,19 +70,18 @@ document.getElementsByClassName("controlButton")[4].onclick = function() { //tog
 document.getElementsByClassName("controlButton")[5].onclick = function() { //show combat room elements
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
         utilityScript.hidingRoomElements();
-        utilityScript.unhideElement(document.querySelector(".combatRoom"));
-        utilityScript.unhideElement(document.querySelector(".enemyElement"));
+        utilityScript.unhideRoomElements([document.querySelector(".combatRoom"), document.querySelector(".enemyElement")]);
         document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
     } else {
         utilityScript.hidingRoomElements();
     }
 }
 
+
 document.getElementsByClassName("controlButton")[6].onclick = function() { //show trader room elements
     if (utilityScript.isElementHidden(document.querySelector(".traderRoom"))) {
         utilityScript.hidingRoomElements();
-        utilityScript.unhideElement(document.querySelector(".traderRoom"));
-        utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
+        utilityScript.unhideRoomElements([document.querySelector(".traderRoom"), document.querySelector(".nextRoomBtn")])
     } else {
         utilityScript.hidingRoomElements();
     }
@@ -91,8 +90,7 @@ document.getElementsByClassName("controlButton")[6].onclick = function() { //sho
 document.getElementsByClassName("controlButton")[7].onclick = function() { //show combat room after victory
     if (utilityScript.isElementHidden(document.querySelector(".combatRoom"))) {
         utilityScript.hidingRoomElements();
-        utilityScript.unhideElement(document.querySelector(".combatRoom"));
-        utilityScript.unhideElement(document.querySelector(".nextRoomBtn"));
+        utilityScript.unhideRoomElements([document.querySelector(".combatRoom"), document.querySelector(".nextRoomBtn")])
         document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
     } else {
         utilityScript.hidingRoomElements();

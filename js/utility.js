@@ -18,3 +18,9 @@ export function hidingRoomElements() {
     hideElement(document.querySelector(".combatRoom"));
     hideElement(document.querySelector(".enemyElement"));
 }
+
+export function unhideRoomElements(array) {
+    for (let i = 0; i < array.length; i++) {
+        unhideElement(array[i]);
+    }
+}
