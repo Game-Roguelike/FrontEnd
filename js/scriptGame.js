@@ -1,5 +1,6 @@
 import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
+import * as sidePanel from './sidePanel.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
