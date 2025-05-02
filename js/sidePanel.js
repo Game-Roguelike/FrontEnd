@@ -26,28 +26,54 @@ class Player {
         this.strengthPoint = 0;
         this.endurancePoint = 0;
     }
+
+    getTotalTempPoints() {
+        return this.strengthPoint + this.endurancePoint;
+    }
+
+    calculateAbilityPoints(){
+        const totalToApply = this.getTotalTempPoints();
+
+        if (totalToApply === 0) {
+            return false;
+        }
+
+        this.strength += this.strengthPoint;
+        this.endurance += this.endurancePoint;
+        this.points -= totalToApply;
+
+        this.strengthPoint = 0;
+        this.endurancePoint = 0;
+
+        return true;
+    }
+
+    canBeApplied() {
+        return this.getTotalTempPoints() !== 0;
+    }
 }
 
-const players = {
+const playersTypes = {
     strongman: new Player('Strongman', 20, 10, 1),
     tank: new Player('Tank', 40, 1, 1),
     hardyman: new Player('Hardyman', 20, 1, 10),
 };
 
+const player = playersTypes.strongman;
 //currently will change after backend
 
-maxHpElement.textContent = `MaxHp : ${players.strongman.hp}`;
-levelElement.textContent = `Level : ${players.strongman.level}`;
-xpElement.textContent = `Xp : ${players.strongman.xp}/${players.strongman.maxXp}`;
-coinsElement.textContent = `Coins : ${players.strongman.coins}`;
-strengthElement.textContent = `Strength : ${players.strongman.strength}`;
-enduranceElement.textContent = `Endurance : ${players.strongman.endurance}`;
-pointsElement.textContent = `Stat points : ${players.strongman.points}`;
+maxHpElement.textContent = `MaxHp : ${player.hp}`;
+levelElement.textContent = `Level : ${player.level}`;
+xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
+coinsElement.textContent = `Coins : ${player.coins}`;
+strengthElement.textContent = `Strength : ${player.strength}`;
+enduranceElement.textContent = `Endurance : ${player.endurance}`;
+pointsElement.textContent = `Stat points : ${player.points}`;
 
 strengthButton.onclick = function () {
-    if (players.strongman.points > getTotalTempPoints()) {
-        players.strongman.strengthPoint += 1;
-        strengthElement.textContent = `Strength : ${players.strongman.strength} (+ ${players.strongman.strengthPoint})`;
+    if (player.points > player.getTotalTempPoints()) {
+        player.strengthPoint += 1;
+        strengthElement.textContent = `Strength : ${player.strength} (+ ${player.strengthPoint})`;
         updatePointsPreview();
     } else {
         alert('Not enough points!');
@@ -55,9 +81,9 @@ strengthButton.onclick = function () {
 };
 
 enduranceButton.onclick = function () {
-    if (players.strongman.points > getTotalTempPoints()) {
-        players.strongman.endurancePoint += 1;
-        enduranceElement.textContent = `Endurance : ${players.strongman.endurance} (+ ${players.strongman.endurancePoint})`;
+    if (player.points > player.getTotalTempPoints()) {
+        player.endurancePoint += 1;
+        enduranceElement.textContent = `Endurance : ${player.endurance} (+ ${player.endurancePoint})`;
         updatePointsPreview();
     } else {
         alert('Not enough points!');
@@ -65,30 +91,19 @@ enduranceButton.onclick = function () {
 };
 
 confirmButton.onclick = function () {
-    let totalToApply = getTotalTempPoints();
-
-    if (totalToApply === 0) {
+    if (!player.canBeApplied()) {
         alert('Not a single point has been added.');
         return;
     }
+    
+    player.calculateAbilityPoints();
 
-    players.strongman.strength += players.strongman.strengthPoint;
-    players.strongman.endurance += players.strongman.endurancePoint;
-    players.strongman.points -= totalToApply;
-
-    strengthElement.textContent = `Strength :  ${players.strongman.strength}`;
-    enduranceElement.textContent = `Endurance : ${players.strongman.endurance}`;
-    pointsElement.textContent = `Stat points : ${players.strongman.points}`;
-
-    players.strongman.strengthPoint = 0;
-    players.strongman.endurancePoint = 0;
+    strengthElement.textContent = `Strength : ${player.strength}`;
+    enduranceElement.textContent = `Endurance : ${player.endurance}`;
+    pointsElement.textContent = `Stat points : ${player.points}`;
 };
 
-function getTotalTempPoints() {
-    return players.strongman.strengthPoint + players.strongman.endurancePoint;
-}
-
 function updatePointsPreview() {
-    let remaining = players.strongman.points - getTotalTempPoints();
+    let remaining = player.points - player.getTotalTempPoints();
     pointsElement.textContent = `Stat points : ${remaining}`;
 }
