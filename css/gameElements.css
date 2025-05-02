@@ -1,0 +1,239 @@
+:root {
+    --text-color : #febf4c ;
+    --text-highlight : #f69824 ;
+    --text-shadow : #382f35 ;
+    --background-color : #4c4449;
+
+    --text-color-enemy : #cf1ad5 ;
+    --text-shadow-enemy : #382f35 ;
+}
+
+.playerElement {
+    position: absolute;
+    z-index: 5;
+    top: 35%;
+    left: 10%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.healthBarStatus {
+    width: 75%;
+    height: auto;
+}
+
+.healthBar {
+    position: relative;
+    align-self: flex-start;
+    top: -26px;
+    left: 30%;
+    display: block;
+    background-color: rgb(204, 17, 17);
+    width: 55%;
+    height: 8px;
+}
+
+.playerSprite {
+    position: relative;
+    top: -20px;
+    width: 100%;
+    height: auto;
+    transform: scaleX(-1);
+}
+
+.currentHealth {
+    position: relative;
+    color: var(--text-shadow);
+    text-shadow: 0px 2px var(--text-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: -20px;
+    left: 30px;
+}
+
+.name {
+    position: relative;
+    color: var(--text-shadow);
+    text-shadow: 0px 2px var(--text-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+    top: -25px;
+}
+
+.bottomUI {
+    position: absolute;
+    z-index: 9;
+    top: 89%;
+    left: 10%;
+
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+    width: 80%;
+    height: 10%;
+}
+
+.attackBtn {
+    background-image: url(/assets/UI/attackBG.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 23%;
+    height: 75%;
+
+    color: var(--text-shadow);
+    text-shadow: 0px 2px var(--text-color);
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.stageMap {
+    background-image: url(/assets/UI/mapBG.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 53%;
+    height: 75%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mapThread {
+    display: block;
+    position: absolute;
+    background-color: var(--text-color);
+    height: 3px;
+    width: 51%;
+}
+
+.stageMap img {
+    position: relative;
+    height: 90%;
+    width: auto;
+}
+
+.nextRoomBtn {
+    position: absolute;
+    z-index: 9;
+    top: 74%;
+    left: 80%;
+
+    color: var(--text-shadow);
+    text-shadow: 0px 2px var(--text-color);
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.enemyElement {
+    position: absolute;
+    z-index: 5;
+    top: 35%;
+    left: 65%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.enemySprite {
+    position: relative;
+    top: -20px;
+    width: 100%;
+    height: auto;
+}
+
+.enemyName {
+    color: var(--text-shadow-enemy);
+    text-shadow: 0px 2px var(--text-color-enemy);
+}
+
+.enemyHealth {
+    color: var(--text-shadow-enemy);
+    text-shadow: 0px 2px var(--text-color-enemy);
+}
+
+.roomChest {
+    position: absolute;
+    z-index: 5;
+    top: 58%;
+    left: 43.5%;
+
+    width: 7VW;
+    height: auto;
+}
+
+.traderBG {
+    position: absolute;
+    z-index: 4;
+    top: 30%;
+    left: 10%;
+
+    width: 80%;
+    height: auto;
+}
+
+.traderOffer {
+    position: absolute;
+    z-index: 9;
+
+    width: 12%;
+    height: auto;
+}
+
+.equipmentOffer {
+    top: 43%;
+    left: 29%;
+}
+
+.weaponOffer {
+    top: 43%;
+    left: 43%;
+}
+
+.usableOffer {
+    top: 43%;
+    left: 59%;
+}
+
+.objectDescription {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-shadow: 0px 2px var(--text-shadow);
+    border-radius: 5px;
+}
+
+.objectDescription *{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.equipmentDescription {
+    top: 53%;
+    left: 35%;
+}
+
+.weaponDescription {
+    top: 53%;
+    left: 50%;
+}
+
+.usableDescription {
+    top: 53%;
+    left: 65%;
+}
+
+.containerEquipment:hover .equipmentDescription, 
+.containerWeapon:hover .weaponDescription, 
+.containerUsable:hover .usableDescription {
+    display: block;
+}

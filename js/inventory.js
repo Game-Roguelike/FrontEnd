@@ -6,13 +6,11 @@ document.querySelector(".inventorySlot.slotArrow").onclick = function() {
     if (!isInventoryOpen) {
         moveInventory("-", 85, 0, 0);
         isInventoryOpen = true;
-        utilityScript.unhideElement(document.querySelector(".blackoutPanel"))
-    } else if (isInventoryOpen) {
+        utilityScript.unhideElement(".blackoutPanel")
+    } else {
         moveInventory("+", 40, 180, 0.5);
         isInventoryOpen = false;
-        setTimeout(() => {
-            utilityScript.hideElement(document.querySelector(".blackoutPanel"));
-        }, 400)
+        setTimeout(() => utilityScript.hideElement(".blackoutPanel"), 400);
     }
 }
 
