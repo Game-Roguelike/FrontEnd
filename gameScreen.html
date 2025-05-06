@@ -34,40 +34,40 @@
 
                     <div class="generalRoomUI">
                         <div class="playerElement">
-                            <img class="healthBarStatus" src="/assets/UI/healthBarAlive.png" alt="">
+                            <img class="healthBarStatus" src="./assets/UI/healthBarAlive.png" alt="">
                             <span class="healthBar"></span>
                             <span class="currentHealth playerHealth">55/55</span>
-                            <img class="playerSprite" src="/assets/Fallback/rogue26Upscale.png" alt="">
+                            <img class="playerSprite" src="./assets/Fallback/rogue26Upscale.png" alt="">
                             <span class="name playerName">Username</span>
                         </div>
                         <div class="bottomUI">
                             <span class="attackBtn">Attack</span>
                             <div class="stageMap">
                                 <span class="mapThread"></span>
-                                <img src="/assets/UI/combatMap.png" alt="">
-                                <img src="/assets/UI/combatMap.png" alt="">
-                                <img src="/assets/UI/combatMap.png" alt="">
-                                <img src="/assets/UI/currentlyAtMap.png" alt="">
-                                <img src="/assets/UI/traderMap.png" alt="">
-                                <img src="/assets/UI/bossMap.png" alt="">
+                                <img src="./assets/UI/combatMap.png" alt="">
+                                <img src="./assets/UI/combatMap.png" alt="">
+                                <img src="./assets/UI/combatMap.png" alt="">
+                                <img src="./assets/UI/currentlyAtMap.png" alt="">
+                                <img src="./assets/UI/traderMap.png" alt="">
+                                <img src="./assets/UI/bossMap.png" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="combatRoom hidden">
                         <div class="enemyElement">
-                            <img class="healthBarStatus" src="/assets/UI/healthBarAlive.png" alt="">
+                            <img class="healthBarStatus" src="./assets/UI/healthBarAlive.png" alt="">
                             <span class="healthBar"></span>
                             <span class="currentHealth enemyHealth">55/55</span>
-                            <img class="enemySprite" src="/assets/Fallback/generallGoblinUpscaled.png" alt="">
+                            <img class="enemySprite" src="./assets/Fallback/generallGoblinUpscaled.png" alt="">
                             <span class="name enemyName">Generall Goblin</span>
                         </div>
                         <img class="roomChest" src="/assets/UI/chestClosed.png" alt="">
                     </div>
                     <div class="traderRoom hidden">
-                        <img class="traderBG" src="/assets/UI/traderRoomBG.png" alt="">
+                        <img class="traderBG" src="./assets/UI/traderRoomBG.png" alt="">
 
                         <div class="containerEquipment">
-                            <img class="traderOffer equipmentOffer" src="/assets/Fallback/testChestplate.png" alt="">
+                            <img class="traderOffer equipmentOffer" src="./assets/Fallback/testChestplate.png" alt="">
                             <div class="objectDescription equipmentDescription">
                                 <p>Object name</p>
                                 <p>Stat bonus</p>
@@ -77,7 +77,7 @@
                         </div>
                         
                         <div class="containerWeapon">
-                            <img class="traderOffer weaponOffer" src="/assets/Fallback/testWeapon.png" alt="">
+                            <img class="traderOffer weaponOffer" src="./assets/Fallback/testWeapon.png" alt="">
                             <div class="objectDescription weaponDescription">
                                 <p>Object Name</p>
                                 <p>Damage value</p>
@@ -87,7 +87,7 @@
                         </div>
                         
                         <div class="containerUsable">
-                            <img class="traderOffer usableOffer" src="/assets/Fallback/testUsable.png" alt="">
+                            <img class="traderOffer usableOffer" src="./assets/Fallback/testUsable.png" alt="">
                             <div class="objectDescription usableDescription">
                                 <p>Object Name</p>
                                 <p>Effect description</p>
@@ -99,8 +99,8 @@
                     </div>
                 </div>
                 
-                <img class="backgroundImg" src="/assets/Fallback/sky1.png" alt="">
-                <img class="platformImg" src="/assets/Fallback/room1Pixel.png" alt="">
+                <img class="backgroundImg" src="./assets/Fallback/sky1.png" alt="">
+                <img class="platformImg" src="./assets/Fallback/room1Pixel.png" alt="">
                 <svg class="windowLight" viewBox="0 0 1920 221.24"><polygon class="windowLight" points="0 55.44 244.07 55.44 304.8 156.83 399.67 0 733.02 0 761.62 47.27 790.21 0 1123.56 0 1152.26 47.44 1180.96 0 1514.31 0 1607.92 155.61 1667.91 56.44 1920 56.44 1920 148.86 1770.84 148.86 1883.6 225.04 36.4 225.04 150.16 148.86 0 148.86 0 55.44"/></svg>
             </div>
             <div class="sidePanel">
@@ -109,12 +109,12 @@
                 <p id="MaxHp"></p>
                 <p id="Level"></p>
                 <p id="Xp"></p>
-                <p class="specialLine"><span id="Coins"></span><img src="/assets/UI/traderMap.png" alt=""></p>
+                <p class="specialLine"><span id="Coins"></span><img src="./assets/UI/traderMap.png" alt=""></p>
                 <br>
-                <p class="specialLine"><button id="StrengthButton">+</button><span id="Strength"></span></p>
-                <p class="specialLine"><button id="EnduranceButton">+</button><span id="Endurance"></span></p>
+                <p class="specialLine"><button id="StrengthButton">+</button><span id="Strength">Strength : 10 (+0)</span></p>
+                <p class="specialLine"><button id="EnduranceButton">+</button><span id="Endurance">Endurance : 1 (+0)</span></p>
                 <br>
-                <p id="Points"></p>
+                <p id="Points">Stat points : XX</p>
                 <p class="confirmButton" id="ConfirmButton">Confirm</p>
             </div>
         </div>
@@ -123,36 +123,222 @@
 
         <div class="playerInventory">
             <div class="hotbar inventoryRow">
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotArrow"><img src="/assets/UI/arrowSlot.png" alt=""></span>
+
+                <div class="inventoryStuff row0slot0">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot1">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot2">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot3 slotInUse">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot4">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot5">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row0slot6">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <span class="slotArrow"><img src="./assets/UI/arrowSlot.png" alt=""></span>
             </div>
 
             <div class="inventoryRow">
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotHelmet"></span>
-                <span class="inventorySlot slotChestplate"></span>
-                <span class="inventorySlot slotBoots"></span>
-                <span class="inventorySlot slotHands"></span>
+                <div class="inventoryStuff row1slot0">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot1 slotInUse">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot2">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot3">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot4">
+                    <span class="inventorySlot slotHelmet"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot5">
+                    <span class="inventorySlot slotChestplate"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot6">
+                    <span class="inventorySlot slotBoots"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row1slot7">
+                    <span class="inventorySlot slotHands"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
             </div>
 
             <div class="inventoryRow">
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotNormal"></span>
-                <span class="inventorySlot slotWeapon"></span>
-                <span class="inventorySlot slotKeepsake"></span>
-                <span class="inventorySlot slotRing"></span>
-                <span class="inventorySlot slotRing"></span>
+                <div class="inventoryStuff row2slot0">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot1">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot2 slotInUse">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot3">
+                    <span class="inventorySlot slotNormal"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot4">
+                    <span class="inventorySlot slotWeapon"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot5">
+                    <span class="inventorySlot slotKeepsake"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot6">
+                    <span class="inventorySlot slotRing"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                <div class="inventoryStuff row2slot7">
+                    <span class="inventorySlot slotRing"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
+                    <div class="itemDescription">
+                        <p>Object's name</p>
+                        <p>Stat bonus/Damage/Effect</p>
+                        <p>Effect/Number of uses</p>
+                        <p>Selling Price : XX Coins</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
         

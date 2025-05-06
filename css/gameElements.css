@@ -78,7 +78,7 @@
 }
 
 .attackBtn {
-    background-image: url(/assets/UI/attackBG.png);
+    background-image: url(../assets/UI/attackBG.png);
     background-size: cover;
     background-repeat: no-repeat;
     width: 23%;
@@ -92,7 +92,7 @@
 }
 
 .stageMap {
-    background-image: url(/assets/UI/mapBG.png);
+    background-image: url(../assets/UI/mapBG.png);
     background-size: cover;
     background-repeat: no-repeat;
     width: 53%;

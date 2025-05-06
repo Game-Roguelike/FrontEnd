@@ -59,14 +59,14 @@ maxHpElement.textContent = `MaxHp : ${player.hp}`;
 levelElement.textContent = `Level : ${player.level}`;
 xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
 coinsElement.textContent = `Coins : ${player.coins}`;
-strengthElement.textContent = `Strength : ${player.strength}`;
-enduranceElement.textContent = `Endurance : ${player.endurance}`;
+strengthElement.textContent = `Strength : ${player.strength} (+0)`;
+enduranceElement.textContent = `Endurance : ${player.endurance} (+0)`;
 pointsElement.textContent = `Stat points : ${player.points}`;
 
 strengthButton.onclick = function () {
     if (player.points > player.getTotalTempPoints()) {
         player.strengthPoint += 1;
-        strengthElement.textContent = `Strength : ${player.strength} (+ ${player.strengthPoint})`;
+        strengthElement.textContent = `Strength : ${player.strength} (+${player.strengthPoint})  `;
         updatePointsPreview();
     } else {
         alert('Not enough points!');
@@ -76,7 +76,7 @@ strengthButton.onclick = function () {
 enduranceButton.onclick = function () {
     if (player.points > player.getTotalTempPoints()) {
         player.endurancePoint += 1;
-        enduranceElement.textContent = `Endurance : ${player.endurance} (+ ${player.endurancePoint})`;
+        enduranceElement.textContent = `Endurance : ${player.endurance} (+${player.endurancePoint}) `;
         updatePointsPreview();
     } else {
         alert('Not enough points!');
@@ -91,8 +91,8 @@ confirmButton.onclick = function () {
     
     player.calculateAbilityPoints();
 
-    strengthElement.textContent = `Strength : ${player.strength}`;
-    enduranceElement.textContent = `Endurance : ${player.endurance}`;
+    strengthElement.textContent = `Strength : ${player.strength} (+0)  `;
+    enduranceElement.textContent = `Endurance : ${player.endurance} (+0) `;
     pointsElement.textContent = `Stat points : ${player.points}`;
 };
 

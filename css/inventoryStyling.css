@@ -1,0 +1,152 @@
+:root {
+    --background-color : #4c4449;
+    --element-shadow : #382f35 ;
+}
+
+.playerInventory {
+    position: absolute;
+    z-index: 21;
+    top: 85vh;
+
+    border-image-slice: 28 28 28 28;
+    border-image-width: 20px 20px 20px 20px;
+    border-image-outset: 10px 10px 10px 10px;
+    border-image-repeat: repeat repeat;
+    border-image-source: url("../assets/UI/sidePanelBGScaled.png");
+    border-style: solid; 
+    background-color: var(--background-color);
+
+    width: 65vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.playerInventory span {
+    display: block;
+}
+
+.inventorySlot {
+    border-image-slice: 31 28 28 28;
+    border-image-width: 20px 20px 20px 20px;
+    border-image-outset: 5px 5px 5px 5px;
+    border-image-repeat: repeat repeat;
+    border-image-source: url("../assets/UI/inventorySlotBasic.png");
+    border-style: solid; 
+    background-color: var(--background-color);
+    border-radius: 10px;
+
+    width: 12vh;
+    height: 12vh;
+}
+
+.inventorySlot:hover {
+    filter: brightness(1.1);
+}
+
+.inventoryRow {
+    width: 98%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.slotArrow {
+    width: 12vh;
+    height: 12vh;
+    border: none;
+}
+
+.slotArrow img{
+    width: 100%;
+    height: auto;
+    rotate: 0deg;
+}
+
+.inventorySlot.slotHelmet {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/helmetSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotChestplate {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/chestplateSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotBoots {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/bootsSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotHands {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/handsSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotWeapon {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/weaponSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotKeepsake {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/keepsakeSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventorySlot.slotRing {
+    border-image-source: url(../assets/UI/inventorySlotBasic.png);
+    background-image: url(../assets/UI/ringSlot.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.inventoryStuff {
+    position: relative;
+    display: inline-block;
+}
+
+.itemDescription {
+    display: none;
+    z-index: 22;
+    position: absolute;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-shadow: 0px 2px var(--text-shadow);
+    border-radius: 5px;
+    top: 40%;  /* show below the image */
+    left: 60%;
+    transform: translateY(-100%);  /* shift the box so its bottom is at the top edge */
+    box-shadow: 5px 5px var(--element-shadow);
+    border: solid 2px var(--element-shadow);
+    width: 200px;
+}
+
+.itemDescription * {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.inventoryStuff.slotInUse:hover .itemDescription {
+    display: block;
+}
+
+.inventorySlot img {
+    padding-left: 8%;
+    padding-top: 8%;
+    width: 85%;
+    height: 85%;
+}
