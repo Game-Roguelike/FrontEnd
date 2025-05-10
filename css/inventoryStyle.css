@@ -132,7 +132,7 @@
     transform: translateY(-100%);  /* shift the box so its bottom is at the top edge */
     box-shadow: 5px 5px var(--element-shadow);
     border: solid 2px var(--element-shadow);
-    width: 200px;
+    width: 220px;
 }
 
 .itemDescription * {

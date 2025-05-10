@@ -1,5 +1,5 @@
 @import url("gameElements.css");
-@import url("inventoryStyling.css");
+@import url("inventoryStyle.css");
 
 :root {
     --background-color : #4c4449;

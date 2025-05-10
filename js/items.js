@@ -1,23 +1,67 @@
+export const TargetType = {
+    enemy : "Enemy",
+    player : "Player"
+}
+
+export const ItemType = {
+    helmet : "Helmet",
+    chestplate : "Body",
+    hands : "Gloves",
+    boots : "Legs",
+    weapon : "Weapon",
+    keepsake : "Amulet",
+    ring : "Ring",
+    usable : "Usable"
+}
+
 class ItemEffect {
-    constructor(HP, strength, endurance, DMGbonus, DMSresist, target) {
+    constructor(hp, strength, endurance, damageBonus, damageResist, target) {
         this.target = target;
-        this.HP = HP;
+        this.hp = hp;
         this.strength = strength;
         this.endurance = endurance;
-        this.DMGbonus = DMGbonus;
-        this.DMSresist = DMSresist;
+        this.damageBonus = damageBonus;
+        this.damageResist = damageResist;
+    }
+
+    isEffectDamageBonus() {
+        return this.damageBonus !== null;
+    }
+
+    isEffectDamageResist() {
+        return this.damageResist !== null;
+    }
+
+    isEffectHp() {
+        return this.hp !== null;
+    }
+
+    isEffectEndurance() {
+        return this.endurance !== null;
+    }
+
+    isEffectStrength() {
+        return this.strength !== null;
+    }
+
+    isTargetPlayer() {
+        return this.target == TargetType.player;
+    }
+
+    isTargetEnemy() {
+        return this.target == TargetType.enemy;
     }
 }
 
-export class Equipment extends ItemEffect{
-    constructor(name, spriteIMG, type, HP, strength, endurance, DMGbonus, DMSresist, price) {
-        super(HP, strength, endurance, DMGbonus, DMSresist, "player");
-        
+export class Equipment{
+    constructor(name, spriteImage, type, hp, strength, endurance, damageBonus, damageResist, price) {
         this.name = name;
-        this.spriteIMG = spriteIMG;
+        this.spriteImage = spriteImage;
         this.type = type;
         this.price = price;
         
+        this.effect = new ItemEffect(hp, strength, endurance, damageBonus, damageResist, TargetType.player);
+
         const temp = this.generateEquipmentDescription();
         this.firstDescription = temp.firstDescription;
         this.secondDescription = temp.secondDescription;
@@ -26,24 +70,22 @@ export class Equipment extends ItemEffect{
 
     generateEquipmentDescription() {
         let inner = [];
-        let type ;
-        if (this.DMGbonus !== null) {
-            inner[1] = `Increases player DMG by ${this.DMGbonus * 100}%`;
-            type = `playerDMG`;
-        } else if (this.DMSresist !== null) {
-            inner[1] = `Decreases incoming DMG by ${this.DMSresist * 100}%`;
-            type = `playerRES`;
-        } else if (this.endurance !== null && this.strength !== null && this.endurance == this.strength) {
-            inner[1] = `Increases player stats by ${this.endurance}%`;
-            type = `playerSTATS`;
+        const effect = this.effect;
+
+        if (effect.isEffectDamageBonus()) {
+            inner[1] = `Increases player damage by ${effect.damageBonus * 100}%`;
+        } else if (effect.isEffectDamageResist()) {
+            inner[1] = `Decreases incoming damage by ${effect.damageResist * 100}%`;
+        } else if (effect.isEffectEndurance() !== null && effect.isEffectStrength() !== null) {
+            inner[1] = `Increases player stats by ${effect.endurance}`;
         }
     
-        if (this.HP !== null) {
-            inner[0] = `Max HP +${this.HP}`;
-        } else if (this.endurance !== null && type !== `playerSTATS`) {
-            inner[0] = `Endurance +${this.endurance}`;
-        } else if (this.strength !== null && type !== `playerSTATS`) {
-            inner[0] = `Strength +${this.strength}`;
+        if (effect.isEffectHp()) {
+            inner[0] = `Max HP +${effect.hp}`;
+        } else if (effect.isEffectEndurance()) {
+            inner[0] = `Endurance +${effect.endurance}`;
+        } else if (effect.isEffectStrength()) {
+            inner[0] = `Strength +${effect.strength}`;
         }
     
         return {
@@ -52,17 +94,19 @@ export class Equipment extends ItemEffect{
             priceDescription: `Price : ${this.price} Coins`
         }
     }
+
+    
 }
 
-export class Weapon extends ItemEffect{
-    constructor(name, spriteIMG, damage, strength, price, HP, DMGbonus) {
-        super(HP, strength, null, DMGbonus, null, "player");
-        
+export class Weapon{
+    constructor(name, spriteImage, damage, strength, price, hp, damageBonus) {
         this.name = name;
-        this.spriteIMG = spriteIMG;
+        this.spriteImage = spriteImage;
         this.price = price;
 
-        this.type = "weapon";
+        this.effect = new ItemEffect(hp, strength, null, damageBonus, null, TargetType.player);
+
+        this.type = ItemType.weapon;
         this.damage = damage;
 
         const temp = this.generateWeaponDescription();
@@ -73,11 +117,13 @@ export class Weapon extends ItemEffect{
 
     generateWeaponDescription() {
         let inner;
-        if (this.DMGbonus !== null) {
-            inner = `Increases player DMG by ${this.DMGbonus * 100}%`;
-        } else if (this.HP !== null) {
-            inner = `Heals player by ${this.HP * 100}% of damage dealt`;
-        } else if (this.HP == null && this.DMGbonus == null) {
+        const effect = this.effect;
+
+        if (effect.isEffectDamageBonus()) {
+            inner = `Increases player damage by ${effect.damageBonus * 100}%`;
+        } else if (effect.isEffectHp()) {
+            inner = `Heals player by ${effect.hp * 100}% of damage dealt`;
+        } else {
             inner = `This weapon has no special effect`;
         }
         
@@ -89,16 +135,16 @@ export class Weapon extends ItemEffect{
     }
 }
 
-export class Usable extends ItemEffect{
-    constructor(name, spriteIMG, price, target, HP, uses) {
-        super(HP, null, null, null, null, target);
-        
+export class Usable{
+    constructor(name, spriteImage, price, target, hp, uses) {
         this.name = name;
-        this.spriteIMG = spriteIMG;
+        this.spriteImage = spriteImage;
         this.price = price;
 
+        this.effect = new ItemEffect(hp, null, null, null, null, target);
+
         this.uses = uses;
-        this.type = "usable";
+        this.type = ItemType.usable;
 
         const temp = this.generateUsableDescription();
         this.firstDescription = temp.firstDescription;
@@ -108,10 +154,12 @@ export class Usable extends ItemEffect{
 
     generateUsableDescription() {
         let inner;
-        if (this.target == "player") {
-            inner = `Heals ${this.HP} HP on use`;
-        } else if (this.target == "enemy") {
-            inner = `Deals ${this.HP} damage to enemy on use`;
+        const effect = this.effect;
+
+        if (effect.isTargetPlayer()) {
+            inner = `Heals ${effect.hp} HP on use`;
+        } else if (effect.isTargetEnemy()) {
+            inner = `Deals ${effect.hp} damage to enemy on use`;
         }
 
         return {
