@@ -1,6 +1,8 @@
 import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 import * as sidePanel from './sidePanel.js';
+import * as playerClass from './playerClass.js';
+
 
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
@@ -46,21 +48,6 @@ document.getElementsByClassName("controlButton")[2].onclick = function() { //def
     }
 }
 
-document.getElementsByClassName("controlButton")[3].onclick = function() { //level up pop up
-    document.getElementsByClassName("popUpText")[0].textContent = `Level Up!`;
-    document.getElementsByClassName("popUpText")[1].textContent = `Don't forget to use your stat points`;
-
-    if(utilityScript.isElementHidden(".levelPopUp")) {
-        levelPopUp.classList.add("levelPop");
-        utilityScript.unhideElement(".levelPopUp");
-        triggerLevelPopUp(0, 100);
-    }
-    else{
-        levelPopUp.classList.add("levelPop");
-        levelPopUp.classList.remove("defeatPop", "victoryPop");
-    }
-}
-
 document.getElementsByClassName("controlButton")[4].onclick = function() { //toggle room insides visibility
     if (utilityScript.isElementHidden(".roomFillings")) {
         utilityScript.unhideElement(".roomFillings");
@@ -99,7 +86,7 @@ document.getElementsByClassName("controlButton")[7].onclick = function() { //sho
     }
 }
 
-function triggerLevelPopUp(startWidth, endWidth) {
+function triggerLevelPopUp(startWidth, endWidth) { //visual , in utility.js
     const duration = 300; // ms
     const startTime = performance.now();
 

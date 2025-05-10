@@ -337,3 +337,7 @@ body {
 .confirmButton {
     cursor: pointer;
 }
+
+.resetButton {
+    cursor: pointer;
+}

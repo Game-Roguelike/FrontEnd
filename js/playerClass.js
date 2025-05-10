@@ -6,9 +6,9 @@ class Player {
         this.endurance = endurance;
 
         this.xp = 0;
-        this.maxXp = 6;
+        this.maxXp = 10;
         this.coins = 0;
-        this.level = 0;
+        this.level = 1;
         this.points = 5;
 
         this.strengthPoint = 0;
@@ -38,7 +38,31 @@ class Player {
         this.strengthPoint = 0;
         this.endurancePoint = 0;
     }
+
+    updateLevelAndXp() {
+        if (this.level in lvl_dict && this.xp >= lvl_dict[this.level][0]) {
+            this.level += 1;
+            
+            if (this.level in lvl_dict) {
+                this.maxXp = lvl_dict[this.level][0];
+            }
+
+            
+        }
+    }
+
+    addXp(experience) {
+        this.xp += experience;
+        this.updateLevelAndXp();
+    }
 }
+
+const lvl_dict = {
+    "1":[10],
+    "2":[20],
+    "3":[30],
+    "4":[54]
+};
 
 const playersTypes = {
     strongman: new Player('Strongman', 20, 10, 1),
@@ -46,4 +70,4 @@ const playersTypes = {
     hardyman: new Player('Hardyman', 20, 1, 10),
 };
 
-export {Player, playersTypes};
+export {Player, playersTypes, lvl_dict};
