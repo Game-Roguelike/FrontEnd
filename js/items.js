@@ -53,7 +53,7 @@ class ItemEffect {
     }
 }
 
-export class Equipment{
+export class Equipment {
     constructor(name, spriteImage, type, hp, strength, endurance, damageBonus, damageResist, price) {
         this.name = name;
         this.spriteImage = spriteImage;
@@ -98,7 +98,7 @@ export class Equipment{
     
 }
 
-export class Weapon{
+export class Weapon {
     constructor(name, spriteImage, damage, strength, price, hp, damageBonus) {
         this.name = name;
         this.spriteImage = spriteImage;
@@ -135,7 +135,7 @@ export class Weapon{
     }
 }
 
-export class Usable{
+export class Usable {
     constructor(name, spriteImage, price, target, hp, uses) {
         this.name = name;
         this.spriteImage = spriteImage;

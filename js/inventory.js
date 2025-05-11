@@ -11,7 +11,7 @@ let currentlyHolding = {
 const inventoryRows = 3;
 const inventoryColumns = 8;
 
-const dummyItem = {
+const placeholderItem = {
     spriteImage: "../assets/UI/blankPlaceholder.png",
     name: "Object's name",
     firstDescription: "Stat bonus/Damage/Effect",
@@ -74,8 +74,11 @@ let testItemChestplate = new itemsScript.Equipment("Shirt of Disgraced General",
 let testItemWeapon = new itemsScript.Weapon("Ax", "../assets/Fallback/testWeapon.png", 7, 7, 55, null, 0.1);
 let testItemUsable = new itemsScript.Usable("Dragon's Blood", "../assets/Fallback/testUsable.png", 32, itemsScript.TargetType.player, 30, 3);
 
-let playerInventory = Array.from({ length: inventoryRows }, () => new Array(inventoryColumns));
+let playerInventory = Array.from({ length: inventoryRows }, () =>
+  Array.from({ length: inventoryColumns }, () => null)
+);
 
+console.log(playerInventory)
 const starterItems = [
     {
         row : 0,
@@ -103,14 +106,13 @@ addClickEvent();
 
 function fillInInventoryElement() {
     const mainElement = document.querySelector(".playerInventory")
-    let slotCount = 0;
-    for(let r = 0; r < inventoryRows; r++) {
+    for (let r = 0; r < inventoryRows; r++) {
         mainElement.innerHTML += `
             <div class="inventoryRow"></div>
         `
         let secondaryElement = document.querySelectorAll(".inventoryRow")[r];
-        for(let c = 0; c < inventoryColumns; c++) {
-            if (r==0 && c == 7) {
+        for (let c = 0; c < inventoryColumns; c++) {
+            if (r == 0 && c == 7) {
                 secondaryElement.innerHTML += `
                     <span class="slotArrow"><img src="./assets/UI/arrowSlot.png" alt=""></span>
                 `
@@ -126,16 +128,17 @@ function fillInInventoryElement() {
 
                 if (r >= 1 && c >= 4) {
                     for (let i = 0; i < specialSlots.length; i++) {
-                        if(specialSlots[i].row == r && specialSlots[i].column == c){
-                            thirdlyElement.classList.add(specialSlots[i].class);
+                        const specialSlot = specialSlots[i];
+                        if (specialSlot.row == r && specialSlot.column == c) {
+                            thirdlyElement.classList.add(specialSlot.class);
                             break;
                         }
                     }
                 } else {
                     thirdlyElement.classList.add("slotNormal");
                 }
-            }
-            slotCount++;       
+
+            }     
         }
     }
 }
@@ -161,7 +164,7 @@ function initializeInventory(){
 }
 
 function renderItem(item, whichSlot) {
-    if (item == dummyItem) {
+    if (item == placeholderItem) {
         whichSlot.classList.remove("slotInUse");
     } else {
         whichSlot.classList.add("slotInUse");
@@ -203,7 +206,7 @@ function addClickEvent(){
             slotCount++;
         }
     }
-} 
+}
 
 function handleSlotClick(element, slot, r, c) {
     if (!isInventoryOpen) return;
@@ -223,35 +226,29 @@ function handleSlotClick(element, slot, r, c) {
         innerSlot.style.backgroundColor = "var(--element-shadow)"; 
     } else {
         const holdingItem = currentlyHolding.holdingItem;
-        if (holdingItem.element !== element) {
-            if (checkForSpecialSlot(r, c)) {
-                if (playerInventory[r][c] !== null) {
-                    let secondItem = playerInventory[r][c];
-                    playerInventory[holdingItem.row][holdingItem.column] = secondItem;
-                    playerInventory[r][c] = holdingItem.item;
-                    renderItem(secondItem, holdingItem.element);
-                } else {
-                    playerInventory[holdingItem.row][holdingItem.column] = null;
-                    playerInventory[r][c] = holdingItem.item;
-                    renderItem(dummyItem, holdingItem.element);
-                }
-                renderItem(holdingItem.item, element);
+        if (holdingItem.element !== element && isSpecialSlot(r, c)) {
+            if (playerInventory[r][c] !== null) {
+                let secondItem = playerInventory[r][c];
+                playerInventory[holdingItem.row][holdingItem.column] = secondItem;
+                playerInventory[r][c] = holdingItem.item;
+                renderItem(secondItem, holdingItem.element);
+            } else {
+                playerInventory[holdingItem.row][holdingItem.column] = null;
+                playerInventory[r][c] = holdingItem.item;
+                renderItem(placeholderItem, holdingItem.element);
             }
+            renderItem(holdingItem.item, element);
         }
         clearCurrentlyHolding();
         clearInventoryHighlights();
     }
 } 
 
-function checkForSpecialSlot(r, c) {
+function isSpecialSlot(r, c) {
     let holdingItem = currentlyHolding.holdingItem;
     for (let i = 0; i < specialSlots.length; i++) {
-        if(specialSlots[i].row == r && specialSlots[i].column == c){
-            if(playerInventory[holdingItem.row][holdingItem.column].type == specialSlots[i].type){
-                return true;
-            } else {
-                return false;
-            }
+        if (specialSlots[i].row == r && specialSlots[i].column == c) {
+            return playerInventory[holdingItem.row][holdingItem.column].type == specialSlots[i].type; 
         }
     }
     return true;
