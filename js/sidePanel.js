@@ -1,5 +1,5 @@
 import { playersTypes, lvl_dict} from "./playerClass.js";
-import { showLevelUpPopUp, triggerLevelPopUp } from "./utility.js";
+import { showLevelUpPopUp } from "./utility.js";
 
 const player = playersTypes.strongman;
 
@@ -84,7 +84,6 @@ levelupButton.onclick = function () {
     updateLevelAndXpPreview();
 
     if (player.level > prevLevel) {
-        triggerLevelPopUp(0, 100);
-        showLevelUpPopUp();
+        showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPopUp");
     }
 }
