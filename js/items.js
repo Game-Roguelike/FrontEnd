@@ -70,22 +70,21 @@ export class Equipment {
 
     generateEquipmentDescription() {
         let inner = [];
-        const effect = this.effect;
 
-        if (effect.isEffectDamageBonus()) {
-            inner[1] = `Increases player damage by ${effect.damageBonus * 100}%`;
-        } else if (effect.isEffectDamageResist()) {
-            inner[1] = `Decreases incoming damage by ${effect.damageResist * 100}%`;
-        } else if (effect.isEffectEndurance() !== null && effect.isEffectStrength() !== null) {
-            inner[1] = `Increases player stats by ${effect.endurance}`;
+        if (this.effect.isEffectDamageBonus()) {
+            inner[1] = `Increases player damage by ${this.effect.damageBonus * 100}%`;
+        } else if (this.effect.isEffectDamageResist()) {
+            inner[1] = `Decreases incoming damage by ${this.effect.damageResist * 100}%`;
+        } else if (this.effect.isEffectEndurance() !== null && this.effect.isEffectStrength() !== null) {
+            inner[1] = `Increases player stats by ${this.effect.endurance}`;
         }
     
-        if (effect.isEffectHp()) {
-            inner[0] = `Max HP +${effect.hp}`;
-        } else if (effect.isEffectEndurance()) {
-            inner[0] = `Endurance +${effect.endurance}`;
-        } else if (effect.isEffectStrength()) {
-            inner[0] = `Strength +${effect.strength}`;
+        if (this.effect.isEffectHp()) {
+            inner[0] = `Max HP +${this.effect.hp}`;
+        } else if (this.effect.isEffectEndurance()) {
+            inner[0] = `Endurance +${this.effect.endurance}`;
+        } else if (this.effect.isEffectStrength()) {
+            inner[0] = `Strength +${this.effect.strength}`;
         }
     
         return {
@@ -117,12 +116,11 @@ export class Weapon {
 
     generateWeaponDescription() {
         let inner;
-        const effect = this.effect;
 
-        if (effect.isEffectDamageBonus()) {
-            inner = `Increases player damage by ${effect.damageBonus * 100}%`;
-        } else if (effect.isEffectHp()) {
-            inner = `Heals player by ${effect.hp * 100}% of damage dealt`;
+        if (this.effect.isEffectDamageBonus()) {
+            inner = `Increases player damage by ${this.effect.damageBonus * 100}%`;
+        } else if (this.effect.isEffectHp()) {
+            inner = `Heals player by ${this.effect.hp * 100}% of damage dealt`;
         } else {
             inner = `This weapon has no special effect`;
         }
@@ -154,12 +152,11 @@ export class Usable {
 
     generateUsableDescription() {
         let inner;
-        const effect = this.effect;
 
-        if (effect.isTargetPlayer()) {
-            inner = `Heals ${effect.hp} HP on use`;
-        } else if (effect.isTargetEnemy()) {
-            inner = `Deals ${effect.hp} damage to enemy on use`;
+        if (this.effect.isTargetPlayer()) {
+            inner = `Heals ${this.effect.hp} HP on use`;
+        } else if (this.effect.isTargetEnemy()) {
+            inner = `Deals ${this.effect.hp} damage to enemy on use`;
         }
 
         return {

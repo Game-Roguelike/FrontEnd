@@ -107,59 +107,59 @@ addClickEvent();
 function fillInInventoryElement() {
     const mainElement = document.querySelector(".playerInventory")
     for (let r = 0; r < inventoryRows; r++) {
-        mainElement.innerHTML += `
-            <div class="inventoryRow"></div>
-        `
+        const inventoryRow = document.createElement("div");
+        inventoryRow.classList.add("inventoryRow");
+        mainElement.appendChild(inventoryRow);
+
         let secondaryElement = document.querySelectorAll(".inventoryRow")[r];
         for (let c = 0; c < inventoryColumns; c++) {
             if (r == 0 && c == 7) {
-                secondaryElement.innerHTML += `
-                    <span class="slotArrow"><img src="./assets/UI/arrowSlot.png" alt=""></span>
-                `
-            } else {
-                secondaryElement.innerHTML += `
-                    <div class="inventoryStuff">
-                        <span class="inventorySlot"><img src="./assets/UI/blankPlaceholder.png" alt=""></span>
-                    </div>
-                `
+                const slotArrow = document.createElement("span");
+                slotArrow.classList.add("slotArrow");
 
-                let inventoryStuff = secondaryElement.lastElementChild;
-                let thirdlyElement = inventoryStuff.querySelector(".inventorySlot");
+                const arrowImg = document.createElement("img");
+                arrowImg.src = "./assets/UI/arrowSlot.png";
+                arrowImg.alt = "";
+
+                slotArrow.appendChild(arrowImg);
+                inventoryRow.appendChild(slotArrow);
+            } else {
+                const inventoryStuff = document.createElement("div");
+                inventoryStuff.classList.add("inventoryStuff");
+
+                const inventorySlot = document.createElement("span");
+                inventorySlot.classList.add("inventorySlot");
+
+                const slotImg = document.createElement("img");
+                slotImg.src = "./assets/UI/blankPlaceholder.png";
+                slotImg.alt = "";
+
+                inventorySlot.appendChild(slotImg);
+                inventoryStuff.appendChild(inventorySlot);
+                inventoryRow.appendChild(inventoryStuff);
 
                 if (r >= 1 && c >= 4) {
                     for (let i = 0; i < specialSlots.length; i++) {
                         const specialSlot = specialSlots[i];
-                        if (specialSlot.row == r && specialSlot.column == c) {
-                            thirdlyElement.classList.add(specialSlot.class);
+                        if (specialSlot.row === r && specialSlot.column === c) {
+                            inventorySlot.classList.add(specialSlot.class);
                             break;
                         }
                     }
                 } else {
-                    thirdlyElement.classList.add("slotNormal");
+                    inventorySlot.classList.add("slotNormal");
                 }
-
-            }     
+            }   
         }
     }
 }
 
 function initializeInventory(){
-    let slotCount = 0;
-    for(let r = 0; r < inventoryRows; r++) {
-        for(let c = 0; c < inventoryColumns; c++) {
-            if (r==0 && c == 7) continue;
+    for(let i = 0; i < starterItems.length; i++){
+        const starterItem = starterItems[i];
 
-            for(let i = 0; i < starterItems.length; i++){
-                if(starterItems[i].row == r && starterItems[i].column == c){
-                    playerInventory[r][c] = starterItems[i].item;
-                    renderItem(starterItems[i].item, inventorySlots[slotCount]);
-                    break;
-                } else {
-                    playerInventory[r][c] = null;
-                }
-            }
-            slotCount++;
-        }
+        playerInventory[starterItem.row][starterItem.column] = starterItem.item;
+        renderItem(starterItem.item, inventorySlots[starterItem.column]);
     }
 }
 
