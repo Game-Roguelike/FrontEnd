@@ -1,6 +1,7 @@
 import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 import * as sidePanel from './sidePanel.js';
+import * as itemsScript from './items.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
@@ -73,7 +74,7 @@ document.getElementsByClassName("controlButton")[5].onclick = function() { //sho
     if (utilityScript.isElementHidden(".combatRoom")) {
         utilityScript.hideMultipleElements(roomElementsExtars);
         utilityScript.unhideMultipleElements([".combatRoom", ".enemyElement"]);
-        document.querySelector(".roomChest").src = `/assets/UI/chestClosed.png`;
+        document.querySelector(".roomChest").src = `../assets/UI/chestClosed.png`;
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);
     }
@@ -93,7 +94,7 @@ document.getElementsByClassName("controlButton")[7].onclick = function() { //sho
     if (utilityScript.isElementHidden(".combatRoom")) {
         utilityScript.hideMultipleElements(roomElementsExtars);
         utilityScript.unhideMultipleElements([".combatRoom", ".nextRoomBtn"])
-        document.querySelector(".roomChest").src = `/assets/UI/chestOpened.png`;
+        document.querySelector(".roomChest").src = `../assets/UI/chestOpened.png`;
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);
     }
