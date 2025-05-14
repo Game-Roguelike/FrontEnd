@@ -53,11 +53,7 @@ function clearPopUp(elementClass) {
     }, 400);
 }
 
-levelPopUp.addEventListener("click", () => {
-    clearPopUp();
-});
-
-function showLevelUpPopUp(title, description, elementClass) { // New function for level-up pop-up with 5 second
+function showLevelUpPopUp(title, description, elementClass) {
     const popUpTexts = document.getElementsByClassName("popUpText");
 
     popUpTexts[0].textContent = title;
@@ -65,14 +61,24 @@ function showLevelUpPopUp(title, description, elementClass) { // New function fo
 
     unhideElement(".levelPopUp");
 
-    levelPopUp.classList.remove("defeatPop", "victoryPop");
     levelPopUp.classList.add(elementClass);
 
     triggerPopUp(0, 100);
 
-    setTimeout(() => {
+    const autoCloseTimeout = setTimeout(() => {
         clearPopUp(elementClass);
+        levelPopUp.removeEventListener("click", clickHandler);
     }, 5000);
+    
+    const clickHandler = () => {
+        clearTimeout(autoCloseTimeout);
+        clearPopUp(elementClass);
+        levelPopUp.removeEventListener("click", clickHandler);
+    };
+
+    setTimeout(() => {
+        levelPopUp.addEventListener("click", clickHandler);
+    }, 100);
 }
 
 export {triggerPopUp, clearPopUp, showLevelUpPopUp};
