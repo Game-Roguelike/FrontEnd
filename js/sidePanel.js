@@ -84,6 +84,6 @@ levelupButton.onclick = function () {
     updateLevelAndXpPreview();
 
     if (player.level > prevLevel) {
-        showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPopUp");
+        showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPop");
     }
 }
