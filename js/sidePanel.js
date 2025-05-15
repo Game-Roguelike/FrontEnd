@@ -1,3 +1,8 @@
+import { playersTypes, lvl_dict} from "./playerClass.js";
+import { showLevelUpPopUp } from "./utility.js";
+
+const player = playersTypes.strongman;
+
 const maxHpElement = document.querySelector('#MaxHp');
 const levelElement = document.querySelector('#Level');
 const xpElement = document.querySelector('#Xp');
@@ -9,51 +14,9 @@ const pointsElement = document.querySelector('#Points');
 const strengthButton = document.querySelector('#StrengthButton');
 const enduranceButton = document.querySelector('#EnduranceButton');
 const confirmButton = document.querySelector('#ConfirmButton');
+const resetButton = document.querySelector('#resetButton');
 
-class Player {
-    constructor(name, hp, strength, endurance) {
-        this.name = name;
-        this.hp = hp;
-        this.strength = strength;
-        this.endurance = endurance;
-
-        this.xp = 0;
-        this.maxXp = 6;
-        this.coins = 0;
-        this.level = 0;
-        this.points = 5;
-
-        this.strengthPoint = 0;
-        this.endurancePoint = 0;
-    }
-
-    getTotalTempPoints() {
-        return this.strengthPoint + this.endurancePoint;
-    }
-
-    calculateAbilityPoints() {
-        const totalToApply = this.getTotalTempPoints();
-
-        this.strength += this.strengthPoint;
-        this.endurance += this.endurancePoint;
-        this.points -= totalToApply;
-
-        this.strengthPoint = 0;
-        this.endurancePoint = 0;
-    }
-
-    canBeApplied() {
-        return this.getTotalTempPoints() !== 0;
-    }
-}
-
-const playersTypes = {
-    strongman: new Player('Strongman', 20, 10, 1),
-    tank: new Player('Tank', 40, 1, 1),
-    hardyman: new Player('Hardyman', 20, 1, 10),
-};
-
-const player = playersTypes.strongman;
+const levelupButton = document.querySelector('#levelupButton'); //it is temporarily 
 
 maxHpElement.textContent = `MaxHp : ${player.hp}`;
 levelElement.textContent = `Level : ${player.level}`;
@@ -96,7 +59,31 @@ confirmButton.onclick = function () {
     pointsElement.textContent = `Stat points : ${player.points}`;
 };
 
+resetButton.onclick = function () {
+    player.resetPoints();
+
+    strengthElement.textContent = `Strength : ${player.strength}`;
+    enduranceElement.textContent = `Endurance : ${player.endurance}`;
+    pointsElement.textContent = `Stat points : ${player.points}`;
+}
+
 function updatePointsPreview() {
     let remaining = player.points - player.getTotalTempPoints();
     pointsElement.textContent = `Stat points : ${remaining}`;
+}
+
+function updateLevelAndXpPreview() {
+    levelElement.textContent = `Level : ${player.level}`;
+    xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
+}
+
+// it is also temporarily 
+levelupButton.onclick = function () {
+    const prevLevel = player.level;
+    player.addXp(5);
+    updateLevelAndXpPreview();
+
+    if (player.level > prevLevel) {
+        showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPop");
+    }
 }
