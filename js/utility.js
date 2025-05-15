@@ -58,3 +58,61 @@ function closeBigPopUp() {
     document.querySelector(".blackoutPanel").style.opacity = "0%";
 }
 
+const levelPopUp = document.querySelector(".levelPopUp");
+
+function triggerPopUp(startWidth, endWidth) {
+    const duration = 300; // ms
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        const currentWidth = startWidth + (endWidth - startWidth) * progress;
+        levelPopUp.style.clipPath = `rect(0px ${currentWidth}% 100% 0px round 0%)`
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+function clearPopUp(elementClass) {
+    triggerPopUp(100, 0);
+
+    setTimeout(() => {
+        hideElement(element);
+        levelPopUp.classList.remove(elementClass);
+    }, 400);
+}
+
+function showLevelUpPopUp(title, description, elementClass) {
+    const popUpTexts = document.getElementsByClassName("popUpText");
+
+    popUpTexts[0].textContent = title;
+    popUpTexts[1].textContent = description;
+
+    unhideElement(".levelPopUp");
+
+    levelPopUp.classList.add(elementClass);
+
+    triggerPopUp(0, 100);
+
+    const autoCloseTimeout = setTimeout(() => {
+        clearPopUp(elementClass);
+        levelPopUp.removeEventListener("click", clickHandler);
+    }, 5000);
+    
+    const clickHandler = () => {
+        clearTimeout(autoCloseTimeout);
+        clearPopUp(elementClass);
+        levelPopUp.removeEventListener("click", clickHandler);
+    };
+
+    setTimeout(() => {
+        levelPopUp.addEventListener("click", clickHandler);
+    }, 100);
+}
+
+export {triggerPopUp, clearPopUp, showLevelUpPopUp};

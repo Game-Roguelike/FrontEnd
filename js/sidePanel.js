@@ -1,6 +1,8 @@
-import { playersTypes } from "./playerClass.js";
+import { playersTypes, lvl_dict} from "./playerClass.js";
+import { showLevelUpPopUp } from "./utility.js";
 
 export const player = playersTypes.strongman;
+
 
 const maxHpElement = document.querySelector('#MaxHp');
 const levelElement = document.querySelector('#Level');
@@ -13,6 +15,9 @@ const pointsElement = document.querySelector('#Points');
 const strengthButton = document.querySelector('#StrengthButton');
 const enduranceButton = document.querySelector('#EnduranceButton');
 const confirmButton = document.querySelector('#ConfirmButton');
+const resetButton = document.querySelector('#resetButton');
+
+const levelupButton = document.querySelector('#levelupButton'); //it is temporarily 
 
 maxHpElement.textContent = `MaxHp : ${player.hp}`;
 levelElement.textContent = `Level : ${player.level}`;
@@ -55,6 +60,14 @@ confirmButton.onclick = function () {
     pointsElement.textContent = `Stat points : ${player.points}`;
 };
 
+resetButton.onclick = function () {
+    player.resetPoints();
+
+    strengthElement.textContent = `Strength : ${player.strength}`;
+    enduranceElement.textContent = `Endurance : ${player.endurance}`;
+    pointsElement.textContent = `Stat points : ${player.points}`;
+}
+
 function updatePointsPreview() {
     let remaining = player.points - player.getTotalTempPoints();
     pointsElement.textContent = `Stat points : ${remaining}`;
@@ -65,3 +78,19 @@ export function visualUpdate() {
     strengthElement.textContent = `Strength : ${player.strength} (+0)  `;
     enduranceElement.textContent = `Endurance : ${player.endurance} (+0) `;
 }
+
+function updateLevelAndXpPreview() {
+    levelElement.textContent = `Level : ${player.level}`;
+    xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
+}
+
+levelupButton.onclick = function () {
+    const prevLevel = player.level;
+    player.addXp(5);
+    updateLevelAndXpPreview();
+
+    if (player.level > prevLevel) {
+        showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPop");
+    }
+}
+

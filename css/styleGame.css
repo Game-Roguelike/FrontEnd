@@ -275,3 +275,7 @@ body {
 .bigPopButton:active {
     filter: brightness(0.9);
 }
+
+.resetButton {
+    cursor: pointer;
+}
