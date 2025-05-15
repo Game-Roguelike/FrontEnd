@@ -1,3 +1,6 @@
+import { useItem } from "./items.js";
+import {clearInventoryHighlights} from "./inventory.js"
+
 const HIDDEN_CLASS_NAME = "hidden";
 
 export function hideElement(elementClass) {
@@ -23,3 +26,35 @@ export function unhideMultipleElements(array) {
         unhideElement(array[i]);
     }
 }
+
+export function showBigPopUp(textArray, item) {
+    let paragraphs = document.querySelectorAll('.bigPopUp > p');
+
+    paragraphs[0].textContent = textArray[0];
+    paragraphs[1].textContent = textArray[1];
+    paragraphs[2].textContent = textArray[2];
+
+    unhideMultipleElements([".bigPopUp", ".blackoutPanel"])
+    document.querySelector(".blackoutPanel").style.opacity = "50%";
+
+    document.querySelectorAll(".bigPopButton")[1].onclick = function() {
+        closeBigPopUp();
+        clearInventoryHighlights();
+    }
+
+    if (item !== null) {
+        unhideElement(".bigPopButton");
+        document.querySelectorAll(".bigPopButton")[0].onclick = function() {
+            useItem(item);
+            closeBigPopUp();
+            clearInventoryHighlights();
+        }
+    }
+}
+
+function closeBigPopUp() {
+    hideElement(".bigPopButton");
+    hideMultipleElements([".bigPopUp", ".blackoutPanel"])
+    document.querySelector(".blackoutPanel").style.opacity = "0%";
+}
+

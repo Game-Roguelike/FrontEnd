@@ -1,5 +1,6 @@
 import * as utilityScript from './utility.js';
 import * as itemsScript from './items.js';
+import { player } from "./sidePanel.js";
 
 let isInventoryOpen = false;
 
@@ -8,8 +9,8 @@ let currentlyHolding = {
     holdingItem: {}
 }
 
-const inventoryRows = 3;
-const inventoryColumns = 8;
+export const inventoryRows = 3;
+export const inventoryColumns = 8;
 
 const placeholderItem = {
     spriteImage: "../assets/UI/blankPlaceholder.png",
@@ -70,15 +71,14 @@ const specialSlots = [
     },
 ]
 
-let testItemChestplate = new itemsScript.Equipment("Shirt of Disgraced General", "../assets/Fallback/testChestplate.png", itemsScript.ItemType.chestplate, null, 1, null, null, 0.1, 25);
-let testItemWeapon = new itemsScript.Weapon("Ax", "../assets/Fallback/testWeapon.png", 7, 7, 55, null, 0.1);
-let testItemUsable = new itemsScript.Usable("Dragon's Blood", "../assets/Fallback/testUsable.png", 32, itemsScript.TargetType.player, 30, 3);
+let testItemChestplate = new itemsScript.Equipment("Shirt of Disgraced General", "./assets/Fallback/testChestplate.png", itemsScript.ItemType.chestplate, null, 1, null, null, 0.1, 25);
+let testItemWeapon = new itemsScript.Weapon("Ax", "./assets/Fallback/testWeapon.png", 7, 7, 55, null, 0.1);
+let testItemUsable = new itemsScript.Usable("Dragon's Blood", "./assets/Fallback/testUsable.png", 32, itemsScript.TargetType.player, 30, 3);
 
-let playerInventory = Array.from({ length: inventoryRows }, () =>
+export let playerInventory = Array.from({ length: inventoryRows }, () =>
   Array.from({ length: inventoryColumns }, () => null)
 );
 
-console.log(playerInventory)
 const starterItems = [
     {
         row : 0,
@@ -99,7 +99,7 @@ const starterItems = [
 
 fillInInventoryElement();
 
-const inventorySlots = document.querySelectorAll('.inventoryStuff');
+export const inventorySlots = document.querySelectorAll('.inventoryStuff');
 
 initializeInventory();
 addClickEvent();
@@ -163,7 +163,7 @@ function initializeInventory(){
     }
 }
 
-function renderItem(item, whichSlot) {
+export function renderItem(item, whichSlot) {
     if (item == placeholderItem) {
         whichSlot.classList.remove("slotInUse");
     } else {
@@ -198,10 +198,16 @@ function addClickEvent(){
     let slotCount = 0;
     for(let r = 0; r < inventoryRows; r++) {
         for(let c = 0; c < inventoryColumns; c++) {
-            if (r==0 && c == 7) continue;
+            if (r == 0 && c == 7) continue;
             
             let slot = inventorySlots[slotCount];
             slot.onclick = () => handleSlotClick(slot, playerInventory[r][c], r, c);
+
+            if (r == 0) {
+                slot.addEventListener("dblclick", () => {
+                    triggerUseItem(slot, playerInventory[r][c])
+                });
+            }
 
             slotCount++;
         }
@@ -229,10 +235,12 @@ function handleSlotClick(element, slot, r, c) {
         if (holdingItem.element !== element && isSpecialSlot(r, c)) {
             if (playerInventory[r][c] !== null) {
                 let secondItem = playerInventory[r][c];
+                doesAffectPlayer(r, c, holdingItem.item, secondItem);
                 playerInventory[holdingItem.row][holdingItem.column] = secondItem;
                 playerInventory[r][c] = holdingItem.item;
                 renderItem(secondItem, holdingItem.element);
             } else {
+                doesAffectPlayer(r, c, holdingItem.item, null);
                 playerInventory[holdingItem.row][holdingItem.column] = null;
                 playerInventory[r][c] = holdingItem.item;
                 renderItem(placeholderItem, holdingItem.element);
@@ -243,6 +251,24 @@ function handleSlotClick(element, slot, r, c) {
         clearInventoryHighlights();
     }
 } 
+
+function triggerUseItem(element, inventoryElement) {
+    if (isInventoryOpen || inventoryElement.type !== itemsScript.ItemType.usable) return;
+
+    let textArray = [];
+    textArray[0] = "Use an item?";
+    textArray[1] = `The item "${inventoryElement.name}" will be used once`;
+    textArray[2] = `The effect "${inventoryElement.firstDescription}" will be applied`;
+
+    const innerSlot = element.querySelector('.inventorySlot');
+    innerSlot.style.backgroundColor = "var(--element-shadow)"; 
+
+    utilityScript.showBigPopUp(textArray, inventoryElement);
+
+    setTimeout( () => {
+        innerSlot.style.backgroundColor = ""; 
+    }, 5000)
+}
 
 function isSpecialSlot(r, c) {
     let holdingItem = currentlyHolding.holdingItem;
@@ -302,9 +328,29 @@ function moveInventory(direction, startVh, startDeg, startOpacity) {
     requestAnimationFrame(animate);
 }
 
-function clearInventoryHighlights() {
+export function clearInventoryHighlights() {
     inventorySlots.forEach(element => {
         const inner = element.querySelector('.inventorySlot');
         inner.style.backgroundColor = "";
     });
+}
+
+function doesAffectPlayer(r, c, firstItem, secondItem) {
+    let holdingItem = currentlyHolding.holdingItem;
+
+    for (let i = 0; i < specialSlots.length; i++) {
+        if (specialSlots[i].row == holdingItem.row && specialSlots[i].column == holdingItem.column) {
+            itemsScript.disequipItem(firstItem);
+            itemsScript.equipItem(secondItem);
+        }
+        if (specialSlots[i].row == r && specialSlots[i].column == c) {
+            itemsScript.equipItem(firstItem);
+            itemsScript.disequipItem(secondItem);
+        }
+    }
+}
+
+export function removeItem(where) {
+    playerInventory[where.row][where.column] = null;
+    renderItem(placeholderItem, where.slot);
 }
