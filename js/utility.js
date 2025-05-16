@@ -28,23 +28,25 @@ export function unhideMultipleElements(array) {
 }
 
 export function showBigPopUp(textArray, item) {
-    let paragraphs = document.querySelectorAll('.bigPopUp > p');
+    const paragraphs = document.querySelectorAll('.bigPopUp > p');
 
-    paragraphs[0].textContent = textArray[0];
-    paragraphs[1].textContent = textArray[1];
-    paragraphs[2].textContent = textArray[2];
+    for (let i = 0; i < paragraphs.length - 1; i++) {
+        paragraphs[i].textContent = textArray[i];
+    }
 
     unhideMultipleElements([".bigPopUp", ".blackoutPanel"])
     document.querySelector(".blackoutPanel").style.opacity = "50%";
 
-    document.querySelectorAll(".bigPopButton")[1].onclick = function() {
+    const buttons = document.querySelectorAll(".bigPopButton");
+
+    buttons[1].onclick = function() {
         closeBigPopUp();
         clearInventoryHighlights();
     }
 
     if (item !== null) {
         unhideElement(".bigPopButton");
-        document.querySelectorAll(".bigPopButton")[0].onclick = function() {
+        buttons[0].onclick = function() {
             useItem(item);
             closeBigPopUp();
             clearInventoryHighlights();

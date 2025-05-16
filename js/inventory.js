@@ -255,15 +255,16 @@ function handleSlotClick(element, slot, r, c) {
 function triggerUseItem(element, inventoryElement) {
     if (isInventoryOpen || inventoryElement.type !== itemsScript.ItemType.usable) return;
 
-    let textArray = [];
-    textArray[0] = "Use an item?";
-    textArray[1] = `The item "${inventoryElement.name}" will be used once`;
-    textArray[2] = `The effect "${inventoryElement.firstDescription}" will be applied`;
+    const messages = [
+        "Use an item?",
+        `The item "${inventoryElement.name}" will be used once`,
+        `The effect "${inventoryElement.firstDescription}" will be applied`
+    ] 
 
     const innerSlot = element.querySelector('.inventorySlot');
     innerSlot.style.backgroundColor = "var(--element-shadow)"; 
 
-    utilityScript.showBigPopUp(textArray, inventoryElement);
+    utilityScript.showBigPopUp(messages, inventoryElement);
 
     setTimeout( () => {
         innerSlot.style.backgroundColor = ""; 

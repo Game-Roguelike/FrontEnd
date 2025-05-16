@@ -178,7 +178,7 @@ export function equipItem(item) {
     player.strength += item.effect.strength;
     player.endurance += item.effect.endurance;
 
-    if(item.type !== ItemType.weapon) {
+    if (item.type !== ItemType.weapon) {
         player.hp += item.effect.hp;
     } else {
         player.damageToHeal += item.effect.hp;
@@ -196,7 +196,7 @@ export function disequipItem(item) {
     player.strength -= item.effect.strength;
     player.endurance -= item.effect.endurance;
 
-    if(item.type !== ItemType.weapon) {
+    if (item.type !== ItemType.weapon) {
         player.hp -= item.effect.hp;
     } else {
         player.damageToHeal -= item.effect.hp;
@@ -212,8 +212,8 @@ export function useItem(item) {
     if (item.effect.isTargetPlayer()) {
         player.currentHp += item.effect.hp;
         document.querySelector(".currentHealth.playerHealth").textContent = `${player.currentHp}/${player.hp}`
-        let temp = item.generateUsableDescription();
-        item.secondDescription = temp.secondDescription;
+
+        item.secondDescription = item.generateUsableDescription().secondDescription;
 
         renderItem(item, where.slot);
         //update healthbar logic
