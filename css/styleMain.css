@@ -1,4 +1,5 @@
 /* @import url("");  reference for extra css files, format is "fileName.css" */
+@import "starterPackStyle.css";
 
 @font-face {
     font-family: dungeonFont;
@@ -10,6 +11,69 @@ body {
     height: 100vh;
     overflow: hidden;
     font-family: "dungeonFont";
+    background-color: #382f35;
+    margin: 0;
+}
+
+.titleContainer {
+    background: url("../assets/UI/menuBackground.png") 0 0/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuBackground {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.menuHeader {
+    position: relative;
+}
+
+.menuTitle {
+    margin-top: 7vw;
+    font-size: 7.6vw;
+    color: rgb(255, 196, 0);
+    text-shadow: 0 0.3vw 0 rgb(231, 121, 18);
+}
+
+.menuButtonsContainer {
+    position: relative;
+    margin-top: 13vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuButton {
+    position: relative;
+    font-size: 5.5vw;
+    margin-bottom: 3vw;
+    color: rgb(235, 131, 34);
+    text-shadow: 0px 0.25vw 0px rgb(158, 90, 26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+.menuButton:hover {
+    color: rgb(240, 185, 6);
+    text-shadow: 0 0.25vw 0 rgb(206, 116, 31);
+    top: 5px;
+    cursor: pointer;
 }
 
 .hidden {
