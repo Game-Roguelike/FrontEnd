@@ -1,8 +1,8 @@
 import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 import * as sidePanel from './sidePanel.js';
-import * as playerClass from './playerClass.js';
 import * as itemsScript from './items.js';
+import * as playerClass from './playerClass.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
