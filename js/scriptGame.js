@@ -6,18 +6,11 @@ import * as enemy from './enemy.js';
 import { fetchEnemy } from './enemy.js';
 import * as playerClass from './playerClass.js';
 
-window.addEventListener('DOMContentLoaded', () => {
-  fetchEnemy();
-});
-import * as playerClass from './playerClass.js';
-import * as enemy from './enemy.js';
-import { fetchEnemy } from './enemy.js';
-
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
 
 //temporal bit till we get the game sequense going
-
+ /*
 document.getElementsByClassName("controlButton")[0].onclick = function() { //clear pop ups
     triggerLevelPopUp(100, 0);
     
@@ -93,7 +86,7 @@ document.getElementsByClassName("controlButton")[7].onclick = function() { //sho
     } else {
         utilityScript.hideMultipleElements(roomElementsExtars);
     }
-}
+} */
 
 function triggerLevelPopUp(startWidth, endWidth) { //visual , in utility.js
     const duration = 300; // ms
