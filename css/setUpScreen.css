@@ -1,0 +1,198 @@
+:root {
+    --background-color : #4c4449;
+    --background-shadow : #382f35;
+    --text-active-color : rgb(243, 189, 73);
+    --text-active-shadow : #382f35;
+
+    --text-inactive-color : rgb(235, 131, 34);
+    --text-inactive-shadow : #382f35;
+}
+
+.selectedPack {
+    --text-active-color : #65a854;
+    --text-active-shadow : #382f35;
+}
+
+.gameMenuContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    background-color: var(--background-color);
+}
+
+.gameMenuInput {
+    width: 80vw;
+    font-size: 3rem;
+    color: var(--text-active-color);
+    text-shadow: 0 2px 0 var(--text-active-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2vw;
+}
+
+.gameMenuInput input {
+    height: 7vh;
+    font-family: "dungeonFont";
+    color: var(--text-active-color);
+    text-shadow: 0 2px 0 var(--text-active-shadow);
+    background-color: var(--background-shadow);
+    border-left: solid 5px var(--text-active-color);
+    border-bottom: solid 5px var(--text-active-color);
+    border-radius: 5px;
+    border-top: none;
+    border-right: none;
+
+    padding-left: 15px;
+    padding-bottom: 10px;
+
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+.starterPackContainer {
+    padding: 2vw;
+    height: fit-content;
+}
+
+.selectStarterPackText {
+    font-size: 3rem;
+    color: var(--text-active-color);
+    text-shadow: 0 2px 0 var(--text-active-shadow);
+}
+
+.starterPackItemsContainer {
+    margin-top: 20px;
+    display: flex;
+    gap: 5vw;
+    flex-wrap: nowrap;
+}
+
+.starterPackItemBox {
+    width: 25%;
+    height: 35vh;
+    text-align: center;
+    border-image-slice: 18 15 15 15;
+    border-image-width: 20px 20px 20px 20px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: repeat repeat;
+    border-image-source: url("../assets/UI/roomBorder.png");
+    border-style: solid;
+}
+
+.starterPackItemText {
+    padding-top: 1vw;
+    font-size: 2rem;
+    color: var(--text-active-color);
+    text-shadow: 0 1.5px 0 var(--text-active-shadow);
+}
+
+.starterPackItems {
+    display: flex;
+    padding: 0.5vw 1vw;
+}
+
+.starterPackItem {
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+.starterItems {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 80%;
+}
+
+.starterItems img {
+    width: 100%;
+    height: auto;
+}
+
+.starterItems .anElement:nth-child(2) img {
+    width: 350%;
+    height: auto;
+}
+
+.starterItems .anElement:nth-child(2) {
+    position: absolute;
+    top: 55px;
+    left: 65px
+}
+
+.big {
+    width: auto;
+    height: 80%;
+}
+
+.starterPackButtonsContainer {
+    margin: 5vw 2vw 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.starterPackButton {
+    position: relative;
+    font-size: 4vw;
+    margin-bottom: 3vw;
+    color: var(--text-inactive-color);
+    text-shadow: 0 3px 0 var(--text-inactive-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+a {
+  color: var(--text-inactive-color);
+  text-shadow: 0 3px 0 var(--text-inactive-shadow);
+  text-decoration: none; /* no underline */
+}
+
+.starterPackButton:hover, a:hover {
+    color: var(--text-active-color);
+    text-shadow: 0 3px 0 var(--text-active-shadow);
+    top: 5px;
+    cursor: pointer;
+}
+
+.anElement {
+    position: relative;
+    display: inline-block;
+}
+
+.elementDescription {
+    display: none;
+    z-index: 22;
+    position: absolute;
+    background-color: var(--background-color);
+    color: var(--text-active-color);
+    text-shadow: 0px 2px var(--text-active-shadow);
+    border-radius: 5px;
+    top: 40%;  /* show below the image */
+    left: 60%;
+    transform: translateY(-100%);  /* shift the box so its bottom is at the top edge */
+    box-shadow: 5px 5px var( --background-shadow);
+    border: solid 2px var( --background-shadow);
+    width: 220px;
+    text-align: left;
+}
+
+.elementDescription * {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.anElement:hover .elementDescription {
+    display: block;
+}
+
+.starterItems .anElement:nth-child(2) .elementDescription {
+    left: 160%;
+}

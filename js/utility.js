@@ -118,3 +118,15 @@ function showLevelUpPopUp(title, description, elementClass) {
 }
 
 export {triggerPopUp, clearPopUp, showLevelUpPopUp};
+
+export async function levelGen(){
+    const dateFromBackend = await fetch("http://localhost:8080/game/level/generate?type=NORMAL")
+      .then(response => response.json())
+      //.then(data => console.log(data))
+      .catch(error => console.error('Помилка:', error));
+    
+    document.getElementsByClassName("backgroundImg")[0].src = "http://localhost:8080/game/image?path=" + dateFromBackend.background.image;
+    document.getElementsByClassName("levelLight")[0].style.background = dateFromBackend.background.gradient;
+    document.getElementsByClassName("windowLight")[1].style.fill = dateFromBackend.background.backgroundLight;
+    document.getElementsByClassName("platformImg")[0].src = "http://localhost:8080/game/image?path=" + dateFromBackend.background.room;
+}

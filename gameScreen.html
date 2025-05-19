@@ -37,7 +37,8 @@
 
                 <span class="levelLight"></span>
 
-                <div class="roomFillings"> <!--hidden-->
+                <div class="roomFillings">
+
                     <span class="nextRoomBtn hidden">Next room >></span>
 
                     <div class="generalRoomUI">
@@ -45,7 +46,7 @@
                             <img class="healthBarStatus" src="./assets/UI/healthBarAlive.png" alt="">
                             <span class="healthBar"></span>
                             <span class="currentHealth playerHealth">55/55</span>
-                            <img class="playerSprite" src="./assets/Fallback/rogue26Upscale.png" alt="">
+                            <img class="playerSprite" src="" alt="">
                             <span class="name playerName">Username</span>
                         </div>
                         <div class="bottomUI">
@@ -61,6 +62,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="combatRoom"> <!--hidden-->
                         <div class="enemyElement">
                             <img class="healthBarStatus" src="./assets/UI/healthBarAlive.png" alt="">
@@ -68,6 +70,7 @@
                             <span class="currentHealth enemyHealth"></span>
                             <img class="enemySprite" src="" alt=""> <!-- "./assets/Fallback/generallGoblinUpscaled.png" -->
                             <span class="name enemyName" id="enemyName"></span>
+
                         </div>
                         <img class="roomChest" src="./assets/UI/chestClosed.png" alt="">
                     </div>
@@ -107,12 +110,12 @@
                     </div>
                 </div>
                 
-                <img class="backgroundImg" src="./assets/Fallback/sky1.png" alt="">
-                <img class="platformImg" src="./assets/Fallback/room1Pixel.png" alt="">
+                <img class="backgroundImg" src="" alt="">
+                <img class="platformImg" src="" alt="">
                 <svg class="windowLight" viewBox="0 0 1920 221.24"><polygon class="windowLight" points="0 55.44 244.07 55.44 304.8 156.83 399.67 0 733.02 0 761.62 47.27 790.21 0 1123.56 0 1152.26 47.44 1180.96 0 1514.31 0 1607.92 155.61 1667.91 56.44 1920 56.44 1920 148.86 1770.84 148.86 1883.6 225.04 36.4 225.04 150.16 148.86 0 148.86 0 55.44"/></svg>
             </div>
             <div class="sidePanel">
-                <p>Username's stats</p>
+                <p id="sideUsername">Username's stats</p>
                 <br>
                 <p id="MaxHp"></p>
                 <p id="Level"></p>

@@ -1,5 +1,5 @@
 /* @import url("");  reference for extra css files, format is "fileName.css" */
-@import "starterPackStyle.css";
+@import url("setUpScreen.css");
 
 @font-face {
     font-family: dungeonFont;
