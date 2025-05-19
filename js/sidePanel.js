@@ -76,7 +76,7 @@ function updateLevelAndXpPreview() {
     levelElement.textContent = `Level : ${player.level}`;
     xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
 }
-
+/*
 // it is also temporarily 
 levelupButton.onclick = function () {
     const prevLevel = player.level;
@@ -87,3 +87,4 @@ levelupButton.onclick = function () {
         showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPop");
     }
 }
+*/
