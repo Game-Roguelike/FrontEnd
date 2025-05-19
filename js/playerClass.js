@@ -13,6 +13,12 @@ class Player {
 
         this.strengthPoint = 0;
         this.endurancePoint = 0;
+
+        this.baseDamage = 1;
+        this.damageBonus = 1;
+        this.damageResist = 1;
+        this.damageToHeal = 0;
+        this.currentHp = this.hp;
     }
 
     getTotalTempPoints() {

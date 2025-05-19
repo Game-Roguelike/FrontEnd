@@ -1,7 +1,8 @@
 import { playersTypes, lvl_dict} from "./playerClass.js";
 import { showLevelUpPopUp } from "./utility.js";
 
-const player = playersTypes.strongman;
+export const player = playersTypes.strongman;
+
 
 const maxHpElement = document.querySelector('#MaxHp');
 const levelElement = document.querySelector('#Level');
@@ -72,10 +73,17 @@ function updatePointsPreview() {
     pointsElement.textContent = `Stat points : ${remaining}`;
 }
 
+export function visualUpdate() {
+    maxHpElement.textContent = `MaxHp : ${player.hp}`;
+    strengthElement.textContent = `Strength : ${player.strength} (+0)  `;
+    enduranceElement.textContent = `Endurance : ${player.endurance} (+0) `;
+}
+
 function updateLevelAndXpPreview() {
     levelElement.textContent = `Level : ${player.level}`;
     xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
 }
+
 /*
 // it is also temporarily 
 levelupButton.onclick = function () {
@@ -88,3 +96,4 @@ levelupButton.onclick = function () {
     }
 }
 */
+
