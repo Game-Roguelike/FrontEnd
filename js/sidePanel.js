@@ -87,7 +87,6 @@ function updateLevelAndXpPreview() {
     xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
 }
 
-
 /*
 // it is also temporarily 
 levelupButton.onclick = function () {

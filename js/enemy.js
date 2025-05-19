@@ -18,4 +18,6 @@ export function fetchEnemy() {
       if (spriteElem) spriteElem.src = `http://localhost:8080/game/image?path=${sprite}`;
     })
     .catch(error => console.error('Error:', error));
+
 }
+
