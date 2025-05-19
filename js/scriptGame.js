@@ -2,6 +2,13 @@ import * as inventoryScript from './inventory.js';
 import * as utilityScript from './utility.js';
 import * as sidePanel from './sidePanel.js';
 import * as itemsScript from './items.js';
+import * as enemy from './enemy.js';
+import { fetchEnemy } from './enemy.js';
+import * as playerClass from './playerClass.js';
+
+window.addEventListener('DOMContentLoaded', () => {
+  fetchEnemy();
+});
 import * as playerClass from './playerClass.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
