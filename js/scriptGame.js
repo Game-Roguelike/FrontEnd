@@ -3,6 +3,8 @@ import * as utilityScript from './utility.js';
 import * as sidePanel from './sidePanel.js';
 import * as itemsScript from './items.js';
 import * as playerClass from './playerClass.js';
+import * as enemy from './enemy.js';
+import { fetchEnemy } from './enemy.js';
 
 const levelPopUp = document.querySelector(".levelPopUp");
 const roomElementsExtars = [".traderRoom", ".nextRoomBtn", ".combatRoom", ".enemyElement"];
@@ -104,3 +106,16 @@ function triggerLevelPopUp(startWidth, endWidth) { //visual , in utility.js
     }
     requestAnimationFrame(animate);
 }
+
+const playerInfo = JSON.parse(sessionStorage.getItem("playerInfo"));
+
+function startUpVisual() {
+    document.querySelector(".playerSprite").src = playerInfo.sprite;
+    document.querySelector(".playerName").textContent = playerInfo.username;
+    document.querySelector(".playerHealth").textContent = playerInfo.character[1] + "/" + playerInfo.character[1];
+
+    utilityScript.levelGen();
+    fetchEnemy();
+}
+
+startUpVisual();

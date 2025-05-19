@@ -1,9 +1,11 @@
-import { playersTypes, lvl_dict} from "./playerClass.js";
+import {Player, playersTypes, lvl_dict} from "./playerClass.js";
 import { showLevelUpPopUp } from "./utility.js";
 
-export const player = playersTypes.strongman;
+const playerInfo = JSON.parse(sessionStorage.getItem("playerInfo"));
 
+export const player = new Player(playerInfo.character[0], playerInfo.character[1], playerInfo.character[2], playerInfo.character[3]);
 
+const username = document.querySelector('#sideUsername');
 const maxHpElement = document.querySelector('#MaxHp');
 const levelElement = document.querySelector('#Level');
 const xpElement = document.querySelector('#Xp');
@@ -19,6 +21,7 @@ const resetButton = document.querySelector('#resetButton');
 
 const levelupButton = document.querySelector('#levelupButton'); //it is temporarily 
 
+username.textContent = `Stats of ${playerInfo.username}`;
 maxHpElement.textContent = `MaxHp : ${player.hp}`;
 levelElement.textContent = `Level : ${player.level}`;
 xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
@@ -84,6 +87,9 @@ function updateLevelAndXpPreview() {
     xpElement.textContent = `Xp : ${player.xp}/${player.maxXp}`;
 }
 
+
+/*
+// it is also temporarily 
 levelupButton.onclick = function () {
     const prevLevel = player.level;
     player.addXp(5);
@@ -93,4 +99,6 @@ levelupButton.onclick = function () {
         showLevelUpPopUp("Level Up!", "Don't forget to use your stat points", ".levelPop");
     }
 }
+*/
+
 

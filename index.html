@@ -8,61 +8,96 @@
     </head>
 
     <body>
-        <!--<div class="titleContainer">
+        <div class="titleContainer">
             <div class="menuBackground"></div>
             <div class="menuHeader">
                 <div class="menuTitle">Title of the game</div>
             </div>
             <div class="menuButtonsContainer">
-                <div class="menuButton">New Game</div>
+
+
+                <div id="newGameButton" class="menuButton">New Game</div>
                 <div class="menuButton">Achievements</div>
             </div>
-        </div>-->
-        <div class="gameMenuContainer">
+        </div>
+
+        <div class="gameMenuContainer hidden">
             <div class="gameMenuInput">
                 <label for="username">Enter your username:</label>
                 <input type="text" id="username" name="username">
             </div>
 
             <div class="starterPackContainer">
-                <div class="selectStarterPackText">Select your starting pack:</div>
+                <div class="selectStarterPackText">Select your starter pack:</div>
 
                 <div class="starterPackItemsContainer">
-                    <div class="starterPackItemBox">
+                    <div class="starterPackItemBox pack1">
                         <div class="starterPackItemText">Starter pack no.1</div>
                         <div class="starterPackItems">
-                            <img class="starterPackItem big" src="/assets/Fallback/rogue26Upscale.png" alt="">
-                            <img class="starterPackItem small" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-1" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-2" src="/assets/Fallback/testWeapon.png" alt="">
+                            <div class="anElement">
+                                <img class="starterPackItem big" src="./assets/Fallback/rogue26Upscale.png" alt="">
+                            </div>
+                            <div class="starterItems">
+                                <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testWeapon.png" alt="">
+                                    
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testChestplate.png" alt="">
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testUsable.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="starterPackItemBox">
-                        <div class="starterPackItemText">Starter pack no.1</div>
+                    <div class="starterPackItemBox pack2">
+                        <div class="starterPackItemText">Starter pack no.2</div>
                         <div class="starterPackItems">
-                            <img class="starterPackItem big" src="/assets/Fallback/rogue26Upscale.png" alt="">
-                            <img class="starterPackItem small" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-1" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-2" src="/assets/Fallback/testWeapon.png" alt="">
+                            <div class="anElement">
+                                <img class="starterPackItem big" src="./assets/Fallback/rogue26Upscale.png" alt="">
+                            </div>
+                            <div class="starterItems">
+                                <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testWeapon.png" alt="">
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testChestplate.png" alt="">
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testUsable.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="starterPackItemBox">
-                        <div class="starterPackItemText">Starter pack no.1</div>
+                    <div class="starterPackItemBox pack3">
+                        <div class="starterPackItemText">Starter pack no.3</div>
                         <div class="starterPackItems">
-                            <img class="starterPackItem big" src="/assets/Fallback/rogue26Upscale.png" alt="">
-                            <img class="starterPackItem small" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-1" src="/assets/Fallback/testWeapon.png" alt="">
-                            <img class="starterPackItem small offset-2" src="/assets/Fallback/testWeapon.png" alt="">
+                            <div class="anElement">
+                                <img class="starterPackItem big" src="./assets/Fallback/rogue26Upscale.png" alt="">
+                            </div>
+                            <div class="starterItems">
+                                <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testWeapon.png" alt="">
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testChestplate.png" alt="">
+                                </div>
+                                 <div class="anElement">
+                                    <img class="starterPackItem" src="./assets/Fallback/testUsable.png" alt="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="starterPackButtonsContainer">
-                <div class="starterPackButton">< Return to main menu</div>
-                <div class="starterPackButton">Start the game ></div>
+                <div id="ToMainMenuButton" class="starterPackButton"><< Return to main menu</div>
+                <div id="fakeStartGameButton" class="starterPackButton">Click to confirm changes</div>
+                <div id="startGameButton" class="starterPackButton hidden"><a href="./gameScreen.html">Start the game >></a></div>
             </div>
         </div>
     </body>

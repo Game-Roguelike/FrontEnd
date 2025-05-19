@@ -1,6 +1,8 @@
 import * as utilityScript from './utility.js';
 import * as itemsScript from './items.js';
 import { player } from "./sidePanel.js";
+import * as itemClass from "./itemClass.js";
+import * as userInfo from "./userInfo.js";
 
 let isInventoryOpen = false;
 
@@ -24,76 +26,76 @@ const specialSlots = [
     {
         row : 1,
         column : 4,
-        type : itemsScript.ItemType.helmet,
+        type : itemClass.ItemType.helmet,
         class : "slotHelmet"
     },
     {
         row : 1,
         column : 5,
-        type : itemsScript.ItemType.chestplate,
+        type : itemClass.ItemType.chestplate,
         class : "slotChestplate"
     },
     {
         row : 1,
         column : 6,
-        type : itemsScript.ItemType.hands,
+        type : itemClass.ItemType.hands,
         class : "slotHands"
     },
     {
         row : 1,
         column : 7,
-        type : itemsScript.ItemType.boots,
+        type : itemClass.ItemType.boots,
         class : "slotBoots"
     },
     {
         row : 2,
         column : 4,
-        type : itemsScript.ItemType.weapon,
+        type : itemClass.ItemType.weapon,
         class : "slotWeapon"
     },
     {
         row : 2,
         column : 5,
-        type : itemsScript.ItemType.keepsake,
+        type : itemClass.ItemType.keepsake,
         class : "slotKeepsake"
     },
     {
         row : 2,
         column : 6,
-        type : itemsScript.ItemType.ring,
+        type : itemClass.ItemType.ring,
         class : "slotRing"
     },
     {
         row : 2,
         column : 7,
-        type : itemsScript.ItemType.ring,
+        type : itemClass.ItemType.ring,
         class : "slotRing"
     },
 ]
-
-let testItemChestplate = new itemsScript.Equipment("Shirt of Disgraced General", "./assets/Fallback/testChestplate.png", itemsScript.ItemType.chestplate, null, 1, null, null, 0.1, 25);
-let testItemWeapon = new itemsScript.Weapon("Ax", "./assets/Fallback/testWeapon.png", 7, 7, 55, null, 0.1);
-let testItemUsable = new itemsScript.Usable("Dragon's Blood", "./assets/Fallback/testUsable.png", 32, itemsScript.TargetType.player, 30, 3);
 
 export let playerInventory = Array.from({ length: inventoryRows }, () =>
   Array.from({ length: inventoryColumns }, () => null)
 );
 
+const playerInfo = JSON.parse(sessionStorage.getItem("playerInfo"));
+
+console.log(playerInfo)
+
 const starterItems = [
     {
         row : 0,
         column : 0,
-        item : testItemWeapon
+        item : playerInfo.item1
     },
     {
         row : 0,
         column : 1,
-        item : testItemChestplate
+        item : playerInfo.item2
     },
     {
         row : 0,
         column : 2,
-        item : testItemUsable
+        item : playerInfo.item3
     },
 ]
 
@@ -173,7 +175,13 @@ export function renderItem(item, whichSlot) {
     if (whichSlot.querySelector(".itemDescription") == null) {
         createDescriptionElement(whichSlot);
     }
-    whichSlot.querySelector('.inventorySlot > img').src = item.spriteImage;
+
+    const img = whichSlot.querySelector('.inventorySlot > img');
+
+    img.src = item.spriteImage;
+    img.onerror = () => {
+        img.src = item.fallbackImage;
+    };
 
     let inventoryItemDescription = whichSlot.querySelectorAll('.itemDescription > p');
                 
@@ -253,7 +261,7 @@ function handleSlotClick(element, slot, r, c) {
 } 
 
 function triggerUseItem(element, inventoryElement) {
-    if (isInventoryOpen || inventoryElement.type !== itemsScript.ItemType.usable) return;
+    if (isInventoryOpen || inventoryElement.type !== itemClass.ItemType.usable) return;
 
     const messages = [
         "Use an item?",
